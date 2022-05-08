@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="MateoPumacahua.View.MiPerfil"
+             Title="MI PERFIL">
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:CircleImage 
+                BorderColor="Green"
+                Aspect="AspectFill"
+                BorderThickness="3"
+                HeightRequest="200"
+                WidthRequest="180"
+                IsAnimationPlaying="True"
+                HorizontalOptions="Center"
+                Source="https://w7.pngwing.com/pngs/442/16/png-transparent-computer-icons-man-icon-logo-silhouette-business-thumbnail.png"/>
+
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+
+                <Button Text="Editar Perfil"
+                        CornerRadius="10"
+                        Padding="10"
+                        Margin="10"/>
+                <Button Text="guardar"
+                        CornerRadius="10"
+                        Padding="10"
+                        Margin="10"/>
+
+            </StackLayout>
+
+            <Frame CornerRadius="50"
+                   BorderColor="green"
+                   Margin="10">
+
+                <StackLayout>
+
+                    <Label Text="Nombre"
+                           TextColor="Black"/>
+                    <Entry />
+
+                    <Label Text="Apellidos"
+                           TextColor="Black"/>
+                    <Entry />
+
+                    <Label Text="Email"
+                           TextColor="Black"/>
+                    <Entry />
+
+                    <Label Text="telefono"
+                           TextColor="Black"/>
+                    <Entry />
+
+                </StackLayout>
+
+            </Frame>
+            
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

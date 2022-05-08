@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MateoPumacahua.View.Home"
+             NavigationPage.HasNavigationBar="False">
+    <!-- contenedor principal -->
+    <StackLayout Margin="5,5,5,0">
+
+
+        <!-- fila 1 -->
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand">
+
+            <!-- Mi Cuenta -->
+            <Frame  HorizontalOptions="FillAndExpand"
+                    x:Name="miCuentaGUI"
+                    >
+
+                <StackLayout>
+
+                    <Image Source="https://w7.pngwing.com/pngs/442/16/png-transparent-computer-icons-man-icon-logo-silhouette-business-thumbnail.png"
+                           WidthRequest="100"
+                           HeightRequest="80"/>
+
+                    <Label Text="Mi cuenta" 
+                           HorizontalTextAlignment="Center"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="20"
+                           TextColor="Black"
+                           Margin="5"/>
+
+                </StackLayout>
+
+            </Frame >
+
+            <!-- mateo pumacahua -->
+            <Frame  HorizontalOptions="FillAndExpand"
+                    x:Name="matePumacahuGUI">
+
+                <StackLayout>
+
+                    <Image Source="https://img2.freepng.es/20180320/lpw/kisspng-computer-icons-school-house-school-house-icon-pictures-5ab0e59ccdf7c6.6602581215215425568437.jpg"
+                               WidthRequest="100"
+                               HeightRequest="80"/>
+
+                    <Label Text="Pagina Web Mateo Pumacahu" 
+                           HorizontalTextAlignment="Center"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="20"
+                           TextColor="Black"
+                           Margin="5"/>
+
+                </StackLayout>
+
+            </Frame>
+
+
+        </StackLayout>
+
+
+        <!-- fila 2 -->
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="FillAndExpand">
+
+            <!-- Tomar asistencia -->
+            <Frame  HorizontalOptions="FillAndExpand"
+                    x:Name="tomarAsistenciaGUI">
+
+                <StackLayout>
+
+                    <Image Source="https://cdn-icons-png.flaticon.com/512/185/185578.png"
+                               WidthRequest="100"
+                               HeightRequest="80"/>
+
+                    <Label Text="Tomar asistencia" 
+                               HorizontalTextAlignment="Center"
+                               HorizontalOptions="FillAndExpand"
+                               FontSize="20"
+                               TextColor="Black"
+                               Margin="5" />
+
+                </StackLayout>
+
+            </Frame>
+
+            <!-- Horario -->
+            <Frame  HorizontalOptions="FillAndExpand"
+                    x:Name="horarioGUI">
+
+                <StackLayout>
+
+                    <Image Source="https://static.vecteezy.com/system/resources/previews/003/738/373/large_2x/time-schedule-icon-free-vector.jpg"
+                           WidthRequest="100"
+                           HeightRequest="80"/>
+
+                    <Label Text="Horario" 
+                           HorizontalTextAlignment="Center"
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="20"
+                           TextColor="Black"
+                           Margin="5" />
+
+                </StackLayout>
+
+            </Frame >
+
+        </StackLayout>
+
+
+        <StackLayout>
+
+            <Label Text="aqui va avisos de la institucion educativa"
+                   TextColor="Black"
+                   HorizontalTextAlignment="Center"
+                   Margin="20"
+                   FontSize="50"/>
+
+        </StackLayout>
+
+    </StackLayout>
+    
+</ContentPage>
