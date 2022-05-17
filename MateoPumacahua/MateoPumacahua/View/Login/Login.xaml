@@ -35,7 +35,8 @@
                        PlaceholderColor="Black"
                        FontSize="16"
                        HorizontalOptions="FillAndExpand"
-                       Keyboard="Numeric"/>
+                       Keyboard="Numeric"
+                       MaxLength="9"/>
 
             </StackLayout>
 

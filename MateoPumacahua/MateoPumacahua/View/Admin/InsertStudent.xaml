@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MateoPumacahua.View.Admin.InsertStudent"
+             Title="agregar alumno">
+    <StackLayout>
+
+        <Entry Text="{Binding IdeAlumno,Mode=TwoWay}"
+            Placeholder="Ide Alumno"
+            PlaceholderColor="Black"/>
+
+        <Entry Text="{Binding Ide,Mode=TwoWay}"
+            Placeholder="Id"
+            PlaceholderColor="Black"/>
+
+        <Entry Text="{Binding Password,Mode=TwoWay}"
+            Placeholder="Password"
+            PlaceholderColor="Black"/>
+
+        <Entry Text="{Binding Name,Mode=TwoWay}"
+            Placeholder="Name"
+            PlaceholderColor="Black"/>
+
+        <Entry Text="{Binding SurName,Mode=TwoWay}"
+            Placeholder="surName"
+            PlaceholderColor="Black"/>
+
+        <Entry Text="{Binding SecondName,Mode=TwoWay}"
+            Placeholder="SecondName"
+            PlaceholderColor="Black"/>
+
+        <StackLayout Orientation="Horizontal">
+
+            <Picker x:Name="GradoPicker"
+                        Title="selecione grado"
+                        HorizontalOptions="StartAndExpand"
+                        SelectedItem="{Binding ResultGrado}"/>
+
+            <Picker x:Name="SeccionPicker"
+                        Title="Seccion"
+                        HorizontalOptions="CenterAndExpand"
+                        SelectedItem="{Binding ResultSeccion}"/>
+
+            
+
+        </StackLayout>
+
+        <Button Text="guardar"
+                Command="{Binding AñadirAlumnoGUI}"/>
+
+
+    </StackLayout>
+</ContentPage>

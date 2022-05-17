@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xc="clr-namespace:XCalendar;assembly=XCalendar"
+             x:Class="MateoPumacahua.View.Horario">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#2196f3" 
+                   Padding="24" 
+                   CornerRadius="0">
+                <Label Text="xcalendar sample" 
+                       HorizontalTextAlignment="center" 
+                       TextColor="white" 
+                       FontSize="36"/>
+            </Frame>
+            <xc:CalendarView x:Name="calendar" 
+                       DateSelectionChanged="CalendarView_DateSelectionChanged"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

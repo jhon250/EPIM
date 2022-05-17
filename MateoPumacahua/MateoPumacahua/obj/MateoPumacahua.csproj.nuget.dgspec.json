@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "A:\\Elaboracion_Proyecto_Senati\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua.csproj": {}
+    "A:\\XAMARIN_FORMS\\Elaboracion_Proyecto_Senati\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua.csproj": {}
   },
   "projects": {
-    "A:\\Elaboracion_Proyecto_Senati\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua.csproj": {
+    "A:\\XAMARIN_FORMS\\Elaboracion_Proyecto_Senati\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\Elaboracion_Proyecto_Senati\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua.csproj",
+        "projectUniqueName": "A:\\XAMARIN_FORMS\\Elaboracion_Proyecto_Senati\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua.csproj",
         "projectName": "MateoPumacahua",
-        "projectPath": "A:\\Elaboracion_Proyecto_Senati\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua.csproj",
+        "projectPath": "A:\\XAMARIN_FORMS\\Elaboracion_Proyecto_Senati\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "A:\\Elaboracion_Proyecto_Senati\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua\\obj\\",
+        "outputPath": "A:\\XAMARIN_FORMS\\Elaboracion_Proyecto_Senati\\MateoPumacahua\\MateoPumacahua\\MateoPumacahua\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -22,7 +22,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {
@@ -44,11 +45,23 @@
               "target": "Package",
               "version": "[7.1.2, )"
             },
+            "FirebaseDatabase.net": {
+              "target": "Package",
+              "version": "[4.0.7, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
+            "Plugin.XCalendar": {
+              "target": "Package",
+              "version": "[2.1.0, )"
             },
             "Xam.Plugins.Forms.ImageCircle": {
               "target": "Package",

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Local="clr-namespace:MateoPumacahua.ViewModel"
+             x:Class="MateoPumacahua.View.Asistencia"
+             
+             Title="Tomar asistencia"
+             >
+   
+    
+    <ListView x:Name="ListView" 
+              ItemsSource="{Binding ListViewSource}"
+              IsRefreshing="{Binding IsRefreshing}"
+              IsPullToRefreshEnabled="True"
+              HasUnevenRows="True"
+              SeparatorColor="red"
+              >
+        
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Frame BorderColor="green"
+                           CornerRadius="10"
+                           Padding="10"
+                           Margin="10"
+                           x:Name="Item">
+                        <StackLayout Padding="0"
+                                     Margin="0">
+
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="CenterAndExpand"
+                                         Padding="0"
+                                         Margin="0">
+
+                                <Label Text="{Binding Name}"
+                                       TextColor="Black"
+                                       FontSize="20"/>
+
+                                <Label Text="{Binding SurName}"
+                                       TextColor="Black"
+                                       FontSize="20"/>
+
+                                <Label Text="{Binding SecondName}"
+                                       TextColor="Black"
+                                       FontSize="20"/>
+
+                            </StackLayout>
+
+                            
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="CenterAndExpand"
+                                         Margin="0"
+                                         Padding="0"
+                                         >
+
+                                <Button x:Name="present" 
+                                        Text="Presente"
+                                        TextColor="White"
+                                        HorizontalOptions="Center"
+                                        BackgroundColor="#8D8D88"
+                                        HeightRequest="30"
+                                        WidthRequest="100"
+                                        Padding="2"
+                                        CornerRadius="10"
+                                        Command="{Binding 
+                                        Path=BindingContext.Presente ,
+                                        Source={x:Reference ListView}}"
+                                        CommandParameter="{Binding .}"/>
+
+                                <Button Text="Tarde"
+                                        TextColor="Black"
+                                        BackgroundColor="#8D8D88"
+                                        HeightRequest="30"
+                                        WidthRequest="100"
+                                        Padding="2"
+                                        CornerRadius="10"
+                                        Command="{Binding
+                                        Path=BindingContext.Tarde ,
+                                        Source={x:Reference ListView}}"
+                                        CommandParameter="{Binding .}"/>
+
+                                <Button Text="Falta"
+                                        TextColor="White"
+                                        BackgroundColor="#8D8D88"
+                                        HeightRequest="30"
+                                        WidthRequest="100"
+                                        Padding="2"
+                                        CornerRadius="10"
+                                        Command="{Binding 
+                                        Path=BindingContext.Falta , 
+                                        Source={x:Reference ListView}}"
+                                        CommandParameter="{Binding .}"/>
+
+                            </StackLayout>
+                            
+                        </StackLayout>
+                    </Frame>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

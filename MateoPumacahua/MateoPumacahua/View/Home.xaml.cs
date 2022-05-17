@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MateoPumacahua.Model;
+using MateoPumacahua.View.Admin;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +14,7 @@ namespace MateoPumacahua.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Home : ContentPage
     {
-        public Home()
+        public Home(object _Alumno )
         {
             InitializeComponent();
 
@@ -77,7 +79,7 @@ namespace MateoPumacahua.View
         private async void PaginaWebMatePumacahua()
         {
             //  navegando a ventana de inicio del MateoPumacahua
-            //await Navigation.PushAsync(new MateoPumacahua());
+            await Navigation.PushAsync(new Page());
         }
 
 
@@ -85,7 +87,7 @@ namespace MateoPumacahua.View
         private async void horarios()
         {
             //  navegando a ventana de inicio del HorariosAlumnoPage
-            //await Navigation.PushAsync(new HorarioDocente());
+            await Navigation.PushAsync(new Horario());
         }
 
 
@@ -93,7 +95,7 @@ namespace MateoPumacahua.View
         private async void tomarAsistencia()
         {
             //  navegando a ventana de inicio del MiSalonAlumnoPage
-            //await Navigation.PushAsync(new TomarAsistenciaDocente());
+            await Navigation.PushAsync(new Asistencia());
         }
 
     }
