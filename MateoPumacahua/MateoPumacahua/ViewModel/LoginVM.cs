@@ -2,13 +2,14 @@
 using MateoPumacahua.FireBase;
 using MateoPumacahua.Model;
 using MateoPumacahua.View;
+using MateoPumacahua.View.Menu;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Menu = MateoPumacahua.View.Menu.Menu;
+
 
 namespace MateoPumacahua.ViewModel
 {
@@ -16,6 +17,7 @@ namespace MateoPumacahua.ViewModel
     {
         DocenteDataFB LoginDocente = new DocenteDataFB();
         AlumnosDataFB LoginAlumnos = new AlumnosDataFB();
+        AdminDataFB LoginAdmin = new AdminDataFB();
 
         #region Atributos
         public int _IdGUI;
@@ -45,21 +47,26 @@ namespace MateoPumacahua.ViewModel
             //    (new Home());
             if (IdGUI != 0 && ContraseñaGUI != "")
             {
-
-                var Alum = await LoginAlumnos.IniciarSesion(IdGUI, ContraseñaGUI);
-                //Console.WriteLine(Alum.Count);
-                if (Alum.Count == 1)
+                var ide = await Extraer_IDE();
+                //Console.WriteLine(ide.Count);
+                if (ide.Count==2)
                 {
                     //Data_login_Alumno();
-                    
-                    await App.Current.MainPage.Navigation.PushAsync
-                (new Menu(Alum));
+                    //Console.WriteLine(ide[0]+ ide[1]);
+                    await App.Current.MainPage.Navigation.PushAsync(new Menus(ide[1],ide[0]));
+
+                }
+                else {
+                    await App.Current.MainPage.DisplayAlert(
+                 "E R R O R -- LOGIN",
+                 "Usuario no encontrado",
+                 "OK");
                 }
             }
             else
             {
                 await App.Current.MainPage.DisplayAlert(
-                    "E R R O R -- LOGIN",
+                    "E R R O R -- LOGIN DATA",
                     "Datos vacios, por favor ingrese datos",
                     "OK");
             }
@@ -67,31 +74,63 @@ namespace MateoPumacahua.ViewModel
 
         }
 
-        public async void Data_login_Alumno()
+        public async Task<List<string>> Extraer_IDE()
         {
-            var result = await LoginAlumnos.IniciarSesion(IdGUI, ContraseñaGUI);
+            var Alum = await LoginAlumnos.IniciarSesion(IdGUI, ContraseñaGUI);
+            var Doncent = await LoginDocente.IniciarSesion(IdGUI, ContraseñaGUI);
+            var Admi = await LoginAdmin.IniciarSesion_Admin(IdGUI, ContraseñaGUI);
+            List<string> IDE = new List<string>() ;
 
-            Console.WriteLine(result.Count);
-            //List<Grado> lists=new List<Grado>();
-            // recorremos la lista 
-            foreach (var s in result)
+            if (Alum.Count == 1)
             {
-                Console.WriteLine(s.IdeAlumno);
-                Console.WriteLine(s.Ide);
-                Console.WriteLine(s.Password);
-                Console.WriteLine(s.Name);
-                Console.WriteLine(s.SurName);
-                Console.WriteLine(s.SecondName);
-                //lists.Add((Grado)s.Grado1);
-                Console.WriteLine(s.Grado1.Seccion);
+                //Data_login_Alumno();
+                IDE.Add("Alumno");
+                foreach (Alumno a in Alum) { IDE.Add(a.IdeAlumno); }
                 
-                
+                //await App.Current.MainPage.Navigation.PushAsync(new Menu(Alum, Doncent, Admi));
+
             }
+            else if (Doncent.Count == 1)
+            {
+                IDE.Add("Docente");
+                foreach (Docente d in Doncent) { IDE.Add(d.IdeDocente); }
+                //await App.Current.MainPage.Navigation.PushAsync(new Menu(Alum, Doncent, Admi));
+            }
+            else if (Admi.Count == 1)
+            {
+                IDE.Add("Admin");
+                foreach (Admins ad in Admi) { IDE .Add(ad.IdeAdmin); }
+                //await App.Current.MainPage.Navigation.PushAsync(new Menu(Alum, Doncent, Admi));
+            }
+            else
+            {
+                IDE.Clear();
+            }
+
+            return IDE;
+            //var result = await LoginAlumnos.IniciarSesion(IdGUI, ContraseñaGUI);
+
+            //Console.WriteLine(result.Count);
+            ////List<Grado> lists=new List<Grado>();
+            //// recorremos la lista 
+            //foreach (var s in result)
+            //{
+            //    Console.WriteLine(s.IdeAlumno);
+            //    Console.WriteLine(s.Ide);
+            //    Console.WriteLine(s.Password);
+            //    Console.WriteLine(s.Name);
+            //    Console.WriteLine(s.SurName);
+            //    Console.WriteLine(s.SecondName);
+            //    //lists.Add((Grado)s.Grado1);
+            //    Console.WriteLine(s.Grado1.Seccion);
 
 
         }
 
 
-
     }
+
+
+
 }
+

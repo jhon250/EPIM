@@ -6,7 +6,8 @@
     "\\MateoPumacahua\\MateoPumacahua\\FireBase",
     "\\MateoPumacahua\\MateoPumacahua\\Model",
     "\\MateoPumacahua\\MateoPumacahua\\View",
-    "\\MateoPumacahua\\MateoPumacahua\\View\\Login"
+    "\\MateoPumacahua\\MateoPumacahua\\View\\Login",
+    "\\MateoPumacahua\\MateoPumacahua\\View\\Menu"
   ],
   "SelectedNode": "\\MateoPumacahua.sln",
   "PreviewInSolutionExplorer": false

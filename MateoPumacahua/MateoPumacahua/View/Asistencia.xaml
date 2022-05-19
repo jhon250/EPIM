@@ -28,7 +28,7 @@
                                      Margin="0">
 
                             <StackLayout Orientation="Horizontal"
-                                         HorizontalOptions="CenterAndExpand"
+                                       HorizontalOptions="CenterAndExpand"
                                          Padding="0"
                                          Margin="0">
 
@@ -57,7 +57,10 @@
                                         Text="Presente"
                                         TextColor="White"
                                         HorizontalOptions="Center"
-                                        BackgroundColor="#8D8D88"
+                                        BackgroundColor="{Binding 
+                                        Path=BindingContext.ColorPresente,
+                                        Source={x:Reference ListView},
+                                        Mode=TwoWay}"
                                         HeightRequest="30"
                                         WidthRequest="100"
                                         Padding="2"

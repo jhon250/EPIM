@@ -8,7 +8,7 @@
     <!--elemntos del menu-->
     <StackLayout>
 
-        <Label Text="---- Menu ----"
+        <Label Text="---- Menu Admin ----"
                TextColor="Black"
                HorizontalTextAlignment="Center"
                FontSize="30"/>

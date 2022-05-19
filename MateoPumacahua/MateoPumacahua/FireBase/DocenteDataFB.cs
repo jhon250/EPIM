@@ -62,6 +62,7 @@ namespace MateoPumacahua.FireBase
                     Name = _newDataAlumno.Name,
                     SurName = _newDataAlumno.SurName,
                     SecondName = _newDataAlumno.SecondName,
+                    Materia = _newDataAlumno.Materia,
                     Grado1 = _newGradoAlumno,
                 });
         }
@@ -80,6 +81,7 @@ namespace MateoPumacahua.FireBase
                     Name = item.Object.Name,
                     SurName = item.Object.SurName,
                     SecondName = item.Object.SecondName,
+                    Materia = item.Object.Materia,
                     Grado1 = item.Object.Grado1,
                 }).ToList();
         }

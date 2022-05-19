@@ -5,7 +5,7 @@
              x:Class="MateoPumacahua.View.MiPerfil"
              Title="MI PERFIL">
     
-    <ContentPage.Content>
+    <ScrollView>
         <StackLayout>
             <controls:CircleImage 
                 BorderColor="Green"
@@ -23,11 +23,14 @@
                 <Button Text="Editar Perfil"
                         CornerRadius="10"
                         Padding="10"
-                        Margin="10"/>
+                        Margin="10"
+                        Command="{Binding Editar}"/>
+                
                 <Button Text="guardar"
                         CornerRadius="10"
                         Padding="10"
-                        Margin="10"/>
+                        Margin="10"
+                        Command="{Binding Guardar}"/>
 
             </StackLayout>
 
@@ -37,21 +40,40 @@
 
                 <StackLayout>
 
+                    <Label Text="Id"
+                           TextColor="Black"/>
+                    <Entry Text="{Binding Ide}"
+                           ClearButtonVisibility="WhileEditing"
+                           TextColor="{Binding Color}"
+                           IsReadOnly="{Binding Edita}"/>
+
                     <Label Text="Nombre"
                            TextColor="Black"/>
-                    <Entry />
+                    <Entry Text="{Binding Name}"
+                           ClearButtonVisibility="WhileEditing"
+                           TextColor="{Binding Color}"
+                           IsReadOnly="{Binding Edita}"/>
 
-                    <Label Text="Apellidos"
+                    <Label Text="Apellido Paterno"
                            TextColor="Black"/>
-                    <Entry />
+                    <Entry Text="{Binding SurName}"
+                           ClearButtonVisibility="WhileEditing"
+                           TextColor="{Binding Color}"
+                           IsReadOnly="{Binding Edita}"/>
 
-                    <Label Text="Email"
+                    <Label Text="Apellidos materno"
                            TextColor="Black"/>
-                    <Entry />
+                    <Entry Text="{Binding SecondName}"
+                           ClearButtonVisibility="WhileEditing"
+                           TextColor="{Binding Color}"
+                           IsReadOnly="{Binding Edita}"/>
 
                     <Label Text="telefono"
                            TextColor="Black"/>
-                    <Entry />
+                    <Entry Text="{Binding Correo}"
+                           ClearButtonVisibility="WhileEditing"
+                           TextColor="{Binding Color}"
+                           IsReadOnly="{Binding Edita}"/>
 
                 </StackLayout>
 
@@ -60,5 +82,5 @@
 
 
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

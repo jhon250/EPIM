@@ -34,7 +34,7 @@ namespace MateoPumacahua.View.Login
         
 
         // campo ¿Has Olvidado tu contraseña?
-        private async void olvidoContraseña()
+        private  void olvidoContraseña()
         {
             //  navegando a ventana de inicio del olvidadoContraseña
             //await Navigation.PushAsync(new OlvidadoContraseña());

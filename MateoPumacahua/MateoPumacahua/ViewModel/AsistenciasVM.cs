@@ -19,7 +19,7 @@ namespace MateoPumacahua.ViewModel
         #region Constructor
         public AsistenciasVM( )
         {
-            LoadData();
+            _ = LoadData();
             
         }
         #endregion
@@ -27,25 +27,32 @@ namespace MateoPumacahua.ViewModel
         #region Atributos
         public string _Name;
         public string _SurName;
+        public string _SecondName;
         public bool isRefreshing = false;
-        public object listViewSource;
+        public List<Alumno> listViewSource;
         public string _colorPresente;
         public string _colorTarde;
         public string _colorFalta;
         #endregion
 
         #region Propiedades
-        public string Name
-        {
-            get { return this._Name; }
-            set { SetValue(ref this._Name, value); }
-        }
+        //public string Name
+        //{
+        //    get { return this._Name; }
+        //    set { SetValue(ref this._Name, value); }
+        //}
 
-        public string SurName
-        {
-            get { return this._SurName; }
-            set { SetValue(ref this._SurName, value); }
-        }
+        //public string SurName
+        //{
+        //    get { return this._SurName; }
+        //    set { SetValue(ref this._SurName, value); }
+        //}
+
+        //public string SecondName
+        //{
+        //    get { return this._SecondName; }
+        //    set { SetValue(ref this._SecondName, value); }
+        //}
 
         public bool IsRefreshing
         {
@@ -53,7 +60,7 @@ namespace MateoPumacahua.ViewModel
             set { SetValue(ref this.isRefreshing, value); }
         }
 
-        public object ListViewSource
+        public List<Alumno> ListViewSource
         {
 
             get { return this.listViewSource; }
@@ -97,20 +104,22 @@ namespace MateoPumacahua.ViewModel
 
         //public ICommand SelectedItem => new Command(selectItem);
         public ICommand Presente => new Command<Alumno>(async(A) => await SelectItems(A));
-        public ICommand Tarde => new Command<Alumno>(async (A) => await SelectItems(A));
-        public ICommand Falta => new Command<Alumno>(async (A) => await SelectItems(A));
+        //public ICommand Tarde => new Command<Alumno>(async (A) => await SelectItems(A));
+        //public ICommand Falta => new Command<Alumno>(async (A) => await SelectItems(A));
         #endregion
 
 
         #region Methods
         public async Task LoadData()
         {
-            
-            this.ListViewSource = await Alumnos.MostrarDatosAlumno();
+
+            ListViewSource = await Alumnos.MostrarDatosAlumno();
+            ColorPresente = "#8D8D88";
         }
 
         public async Task SelectItems(Alumno parametros)
         {
+            ColorPresente = "Red";
              await App.Current.MainPage.DisplayAlert(
                       "Selected item", parametros.IdeAlumno
                        , "OK");
