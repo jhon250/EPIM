@@ -63,11 +63,15 @@ namespace MateoPumacahua.View
                 {
                     if (Data=="Alumno")
                     {
-                        Navigation.PushAsync(new VerAsistencias());
+                        Navigation.PushAsync(new Cursos(IDE, Data));
+                    }
+                    else if (Data=="Docente")
+                    {
+                        Navigation.PushAsync(new Cursos(IDE,Data));
                     }
                     else
                     {
-                        Navigation.PushAsync(new Asistencia());
+                        //Navigation.PushAsync(new Asistencia(IDE,Data));
                     }
                     
                 })
@@ -86,26 +90,26 @@ namespace MateoPumacahua.View
         }
 
         #region Selcetor
-        public void verificData_Alumno(List<Alumno> _alumno)
-        {
+        //public void verificData_Alumno(List<Alumno> _alumno)
+        //{
             
-            Console.WriteLine(_alumno);
-            //List<Grado> lists=new List<Grado>();
-            // recorremos la lista 
-            foreach (Alumno s in _alumno)
-            {
-                Console.WriteLine(s.IdeAlumno);
-                Console.WriteLine(s.Ide);
-                Console.WriteLine(s.Password);
-                Console.WriteLine(s.Name);
-                Console.WriteLine(s.SurName);
-                Console.WriteLine(s.SecondName);
-                //lists.Add((Grado)s.Grado1);
-                Console.WriteLine(s.Grado1.Seccion);
+        //    Console.WriteLine(_alumno);
+        //    //List<Grado> lists=new List<Grado>();
+        //    // recorremos la lista 
+        //    foreach (Alumno s in _alumno)
+        //    {
+        //        Console.WriteLine(s.IdeAlumno);
+        //        Console.WriteLine(s.Ide);
+        //        Console.WriteLine(s.Password);
+        //        Console.WriteLine(s.Name);
+        //        Console.WriteLine(s.SurName);
+        //        Console.WriteLine(s.SecondName);
+        //        //lists.Add((Grado)s.Grado1);
+        //        Console.WriteLine(s.Grado1.Seccion);
 
-            }
+        //    }
 
-        }
+        //}
 
         public void verificData_Docente(List<Docente> _Docente)
         {

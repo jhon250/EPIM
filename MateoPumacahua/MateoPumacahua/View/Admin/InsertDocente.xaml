@@ -29,6 +29,10 @@
             Placeholder="SecondName"
             PlaceholderColor="Black"/>
 
+        <Entry Text="{Binding Correo,Mode=TwoWay}"
+            Placeholder="SecondName"
+            PlaceholderColor="Black"/>
+
         <StackLayout Orientation="Horizontal">
             
             <Picker x:Name="MateriaPicker"
@@ -45,6 +49,11 @@
                         Title="Seccion"
                         HorizontalOptions="CenterAndExpand"
                         SelectedItem="{Binding ResultSeccion}"/>
+
+            <Picker x:Name="GeneroPicker"
+                        Title="Genero"
+                        HorizontalOptions="StartAndExpand"
+                        SelectedItem="{Binding ResultGenero}"/>
 
 
 

@@ -40,6 +40,10 @@ namespace MateoPumacahua.View.Admin
             // añadir elementos de genero
             MateriaPicker.Items.Add("Matematicas");
             MateriaPicker.Items.Add("Comunicacion");
+
+            // añadir elementos de genero
+            GeneroPicker.Items.Add("Masculino");
+            GeneroPicker.Items.Add("Femenino");
         }
     }
 }

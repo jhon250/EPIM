@@ -17,13 +17,15 @@ namespace MateoPumacahua.ViewModel.Admin
         // Atributos
         #region
 
-        public String _IdeAlumno;
+        
         public int _Ide;
         public string _Password;
         public string _Name;
         public string _SurName;
-        public String _SecondName;
+        public string _SecondName;
+        public string _Correo;
         public object _Grado1;
+        public string GeneroALVM;
         public string GradoALVM;
         public string SeccionALVM; 
 
@@ -32,12 +34,6 @@ namespace MateoPumacahua.ViewModel.Admin
 
         // Propiedades
         #region Propiedades
-        public String IdeAlumno
-        {
-            get { return this._IdeAlumno; }
-            set { SetValue(ref this._IdeAlumno, value); }
-        }
-
         public int Ide
         {
             get { return this._Ide; }
@@ -68,6 +64,12 @@ namespace MateoPumacahua.ViewModel.Admin
             set { SetValue(ref this._SecondName, value); }
         }
 
+        public string Correo
+        {
+            get { return this._Correo; }
+            set { SetValue(ref this._Correo, value); }
+        }
+
         public object Grado1
         {
             get { return this._Grado1; }
@@ -87,6 +89,11 @@ namespace MateoPumacahua.ViewModel.Admin
             set { SetValue(ref this.SeccionALVM, value); }
         }
 
+        public string ResultGenero
+        {
+            get { return this.GeneroALVM; }
+            set { SetValue(ref this.GeneroALVM, value); }
+        }
 
         #endregion
 
@@ -103,33 +110,29 @@ namespace MateoPumacahua.ViewModel.Admin
         }
 
 
-
         // ingreso de datos del adminstrador
         public async void insertarAlumno()
         {
+            //var dia = new Day() { };
+            var curso = new Course() { };
+            var GradoAlumno = new Grado()
+            {
+                Grados = ResultGrado,
+                Seccion = ResultSeccion,
+                IdeDocenteG = "",
+                Cursoss = curso,
+            };
 
             var Alumnos = new Alumno()
             {
-                IdeAlumno = IdeAlumno,
                 Ide = Ide,
                 Password = Password,
                 Name = Name,
                 SurName = SurName,
                 SecondName = SecondName,
+                Correo = Correo,
+                Genero = ResultGenero,    
             };
-
-            var cursoAlumno = new Cursos()
-            {
-                Matematica = "",
-            };
-            
-            var GradoAlumno = new Grado()
-            {
-                Seccion = SeccionALVM,
-                Profesor = "",
-                Curso =cursoAlumno,
-            };
-
 
             await AlumnosFB.AgregarDatosAlumno(Alumnos, GradoAlumno);
 
@@ -138,17 +141,45 @@ namespace MateoPumacahua.ViewModel.Admin
 
         }
 
+        //private void Grado_elect(string Grado)
+        //{
+        //    if (Grado == "Grado 1")
+        //    {
+        //        var Alumnos = new Alumno()
+        //        {
+
+        //            Ide = Ide,
+        //            Password = Password,
+        //            Name = Name,
+        //            SurName = SurName,
+        //            SecondName = SecondName,
+        //            Correo = Correo,
+        //            Genero = ResultGenero,
+        //            Grado = GradoAlumno,
+        //        };
+        //        var GradoAlumno = new Grado()
+        //        {
+        //            Seccion = ResultSeccion,
+        //            IdeDocenteG = "",
+        //            Cursoss = curso,
+        //        };
+        //        var curso = new Course() { };
+                
+        //    }
+        //}
+
 
         public void LimpiarEntry()
         {
             Ide = 0;
-            IdeAlumno = "";
             Password = "";
             Name = "";
             SurName = "";
             SecondName = "";
+            Correo = "";
             ResultGrado = "";
             ResultSeccion = "";
+            ResultGenero = "";
         }
 
     }

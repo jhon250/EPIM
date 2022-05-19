@@ -13,10 +13,10 @@ namespace MateoPumacahua.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Asistencia : ContentPage
     {
-        public Asistencia( )
+        public Asistencia(string IDE, string Data)
         {
             InitializeComponent();
-            BindingContext = new AsistenciasVM();
+            BindingContext = new AsistenciasVM(IDE,Data);
             
         }
 

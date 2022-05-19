@@ -13,11 +13,10 @@ namespace MateoPumacahua.Model
         public string SurName { get; set; }
         public string SecondName { get; set; }
         public string Materia { get; set; }
+        public string Correo { get; set; }
+        public string Genero { get; set; }
         public Grado Grado1 { get; set; }
-        public object Grado2 { get; set; }
-        public object Grado3 { get; set; }
-        public object Grado4 { get; set; }
-        public object Grado5 { get; set; }
+        
 
     }
 }

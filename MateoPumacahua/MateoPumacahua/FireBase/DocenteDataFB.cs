@@ -49,8 +49,8 @@ namespace MateoPumacahua.FireBase
 
         // metodo de agragar alumnos
         public async Task AgregarDatosDocente(
-            Docente _newDataAlumno,
-            Grado _newGradoAlumno)
+            Docente _newDataAlumno)
+            //Grado _newGradoAlumno)
         {
             await DataAlumnos
                 .Child("Docentes")
@@ -63,7 +63,7 @@ namespace MateoPumacahua.FireBase
                     SurName = _newDataAlumno.SurName,
                     SecondName = _newDataAlumno.SecondName,
                     Materia = _newDataAlumno.Materia,
-                    Grado1 = _newGradoAlumno,
+                   // Grado1 = _newGradoAlumno,
                 });
         }
 
@@ -87,4 +87,6 @@ namespace MateoPumacahua.FireBase
         }
 
     }
+
+    
 }

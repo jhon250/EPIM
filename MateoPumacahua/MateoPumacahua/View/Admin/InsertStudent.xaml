@@ -5,9 +5,7 @@
              Title="agregar alumno">
     <StackLayout>
 
-        <Entry Text="{Binding IdeAlumno,Mode=TwoWay}"
-            Placeholder="Ide Alumno"
-            PlaceholderColor="Black"/>
+     
 
         <Entry Text="{Binding Ide,Mode=TwoWay}"
             Placeholder="Id"
@@ -29,10 +27,15 @@
             Placeholder="SecondName"
             PlaceholderColor="Black"/>
 
+        <Entry Text="{Binding Correo,Mode=TwoWay}"
+            Placeholder="SecondName"
+            PlaceholderColor="Black"/>
+
+
         <StackLayout Orientation="Horizontal">
 
             <Picker x:Name="GradoPicker"
-                        Title="selecione grado"
+                        Title="Grado"
                         HorizontalOptions="StartAndExpand"
                         SelectedItem="{Binding ResultGrado}"/>
 
@@ -41,7 +44,10 @@
                         HorizontalOptions="CenterAndExpand"
                         SelectedItem="{Binding ResultSeccion}"/>
 
-            
+            <Picker x:Name="GeneroPicker"
+                        Title="Genero"
+                        HorizontalOptions="StartAndExpand"
+                        SelectedItem="{Binding ResultGenero}"/>
 
         </StackLayout>
 

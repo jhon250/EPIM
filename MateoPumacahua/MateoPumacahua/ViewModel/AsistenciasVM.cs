@@ -17,9 +17,9 @@ namespace MateoPumacahua.ViewModel
         AlumnosDataFB Alumnos = new AlumnosDataFB();
 
         #region Constructor
-        public AsistenciasVM( )
+        public AsistenciasVM(string grado, string seccion)
         {
-            _ = LoadData();
+            _ = LoadData(grado,seccion);
             
         }
         #endregion
@@ -103,25 +103,26 @@ namespace MateoPumacahua.ViewModel
         //}
 
         //public ICommand SelectedItem => new Command(selectItem);
-        public ICommand Presente => new Command<Alumno>(async(A) => await SelectItems(A));
+        public ICommand Presente => new Command<Alumno>(async(A) => await SelectItems_Present(A));
         //public ICommand Tarde => new Command<Alumno>(async (A) => await SelectItems(A));
         //public ICommand Falta => new Command<Alumno>(async (A) => await SelectItems(A));
         #endregion
 
 
         #region Methods
-        public async Task LoadData()
+        public async Task LoadData(string grado, string seccion)
         {
 
-            ListViewSource = await Alumnos.MostrarDatosAlumno();
-            ColorPresente = "#8D8D88";
+            //var list = await Alumnos.MostrarAlumnos_Asistencia(grado, seccion);
+            //ListViewSource = list;
+            //ColorPresente = "#8D8D88";
         }
 
-        public async Task SelectItems(Alumno parametros)
+        public async Task SelectItems_Present(Alumno A)
         {
             ColorPresente = "Red";
              await App.Current.MainPage.DisplayAlert(
-                      "Selected item", parametros.IdeAlumno
+                      "Selected item", A.IdeAlumno
                        , "OK");
         }
 

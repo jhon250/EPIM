@@ -50,7 +50,7 @@ namespace MateoPumacahua.FireBase
         public async Task AgregarDatosAdmin(Admins _newDataAdmin)
         {
             await DataAdmin
-                .Child("Administrador")
+                .Child("Admin")
                 .PostAsync(new Admins()
                 {
                     Ide = _newDataAdmin.Ide,
@@ -65,7 +65,7 @@ namespace MateoPumacahua.FireBase
         public async Task<List<Admins>> MostrarDatosAdmin()
         {
             return (await DataAdmin
-                .Child("Docentes")
+                .Child("Admin")
                 .OnceAsync<Admins>())
                 .Select(item => new Admins
                 {

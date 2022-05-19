@@ -39,8 +39,8 @@ namespace MateoPumacahua.View.Admin
             SeccionPicker.Items.Add("Seccion J");
 
             // añadir elementos de genero
-            //GeneroPicker.Items.Add("Masculino");
-            //GeneroPicker.Items.Add("Femenino");
+            GeneroPicker.Items.Add("Masculino");
+            GeneroPicker.Items.Add("Femenino");
 
         }
     }

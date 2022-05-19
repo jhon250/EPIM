@@ -52,7 +52,7 @@ namespace MateoPumacahua.ViewModel
                 if (ide.Count==2)
                 {
                     //Data_login_Alumno();
-                    //Console.WriteLine(ide[0]+ ide[1]);
+                    //Console.WriteLine(await LoginAlumnos.data_course());
                     await App.Current.MainPage.Navigation.PushAsync(new Menus(ide[1],ide[0]));
 
                 }

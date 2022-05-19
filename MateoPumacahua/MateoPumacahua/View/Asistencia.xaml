@@ -57,10 +57,7 @@
                                         Text="Presente"
                                         TextColor="White"
                                         HorizontalOptions="Center"
-                                        BackgroundColor="{Binding 
-                                        Path=BindingContext.ColorPresente,
-                                        Source={x:Reference ListView},
-                                        Mode=TwoWay}"
+                                        BackgroundColor="{Binding Presente}"
                                         HeightRequest="30"
                                         WidthRequest="100"
                                         Padding="2"

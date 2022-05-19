@@ -60,8 +60,10 @@ namespace MateoPumacahua.FireBase
                     Password = _newDataAlumno.Password,
                     Name = _newDataAlumno.Name,
                     SurName = _newDataAlumno.SurName,
+                    Correo = _newDataAlumno.Correo,
+                    Genero = _newDataAlumno.Genero,
                     SecondName = _newDataAlumno.SecondName,
-                    Grado1 = _newGradoAlumno,
+                    Grado = _newGradoAlumno,
                 });
         }
 
@@ -78,9 +80,59 @@ namespace MateoPumacahua.FireBase
                     Name = item.Object.Name,
                     SurName = item.Object.SurName,
                     SecondName= item.Object.SecondName,
-                    Grado1 = item.Object.Grado1,
+                    Correo= item.Object.Correo,
+                    Genero= item.Object.Genero,
+                    Grado = item.Object.Grado,
                 }).ToList();
         }
+
+        //public async Task<List<Course>> data_course()
+        //{
+        //    return (await DataAlumnos
+        //        .Child("Alumnos")
+        //        .OnceAsync<Course>())
+        //        .Select(item => new Course
+        //        {
+        //            IdeDocenteC = item.Object.IdeDocenteC,
+        //        }).ToList();
+        //}
+
+        //public async Task<List<Alumno>> MostrarAlumnos_Asistencia(int Grado,string Seccion,string IdeDocente)
+        //{
+        //    var Alumn = await MostrarDatosAlumno();
+        //    if (Grado == 1)
+        //    {
+        //        return Alumn.Where(Alum =>
+        //        Alum.Grado1.Seccion == Seccion && 
+        //        Alum.Grado1.IdeDocenteG == IdeDocente ).ToList();
+        //    }
+        //    else if (Grado == 2)
+        //    {
+        //        return Alumn.Where(Alum =>
+        //        Alum.Grado2.Seccion == Seccion).ToList();
+        //    }
+        //    else if (Grado == 3)
+        //    {
+        //        return Alumn.Where(Alum =>
+        //        Alum.Grado3.Seccion == Seccion).ToList();
+        //    }
+        //    else if (Grado == 4)
+        //    {
+        //        return Alumn.Where(Alum =>
+        //        Alum.Grado4.Seccion == Seccion).ToList();
+        //    }
+        //    else if (Grado == 5)
+        //    {
+        //        return Alumn.Where(Alum =>
+        //        Alum.Grado5.Seccion == Seccion).ToList();
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //    //return Alumn.Where(Alum =>
+        //    //Alum.Grado1.Seccion == Seccion).ToList();
+        //}
 
         
     }

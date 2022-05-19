@@ -16,29 +16,30 @@ namespace MateoPumacahua.ViewModel.Admin
 
 
         // Atributos
-        #region
+        #region atributos
 
-        public string _IdeDocente;
         public int _Ide;
         public string _Password;
         public string _Name;
         public string _SurName;
         public string _SecondName;
+        public string _Correo;
         public string _Materia;
         public object _Grado1;
         public string _ResultMateria;
         public string _GradoALVM;
         public string _SeccionALVM;
+        public string GeneroALVM;
 
         #endregion
 
 
         // Propiedades
         #region Propiedades
-        public string IdeDocente
+        public string ResultGenero
         {
-            get { return this._IdeDocente; }
-            set { SetValue(ref this._IdeDocente, value); }
+            get { return this.GeneroALVM; }
+            set { SetValue(ref this.GeneroALVM, value); }
         }
 
         public int Ide
@@ -69,6 +70,12 @@ namespace MateoPumacahua.ViewModel.Admin
         {
             get { return this._SecondName; }
             set { SetValue(ref this._SecondName, value); }
+        }
+
+        public string Correo
+        {
+            get { return this._Correo; }
+            set { SetValue(ref this._Correo, value); }
         }
 
         public string Materia
@@ -118,32 +125,19 @@ namespace MateoPumacahua.ViewModel.Admin
 
             var Docentes = new Docente()
             {
-                IdeDocente = IdeDocente,
                 Ide = Ide,
                 Password = Password,
                 Name = Name,
                 SurName = SurName,
                 SecondName = SecondName,
-                Materia = Materia,
-            };
-
-            var cursoDocentes = new Cursos()
-            {
-                Matematica = "",
-            };
-
-            var GradoDocentes = new Grado()
-            {
-                Seccion = ResultSeccion,
-                
-                Curso = cursoDocentes,
+                Correo = Correo,
+                Genero = ResultGenero,
             };
 
 
-            await DocenteFB.AgregarDatosDocente(Docentes, GradoDocentes);
+            await DocenteFB.AgregarDatosDocente(Docentes);
 
             LimpiarEntry();
-
 
         }
 
@@ -151,7 +145,6 @@ namespace MateoPumacahua.ViewModel.Admin
         public void LimpiarEntry()
         {
             Ide = 0;
-            IdeDocente = "";
             Password = "";
             Name = "";
             SurName = "";
