@@ -19,7 +19,10 @@
 
         <Button Text="Agregar Docente"
                 Clicked="Button_Add_Docente"/>
-        
+
+        <Button Text="Agregar Cursos"
+                Clicked="Button_Add_Cursos"/>
+
     </StackLayout>
     
 </ContentPage>

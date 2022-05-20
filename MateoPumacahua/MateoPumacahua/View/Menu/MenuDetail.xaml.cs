@@ -29,5 +29,10 @@ namespace MateoPumacahua.View.Menu
             App.MenuDetail.IsPresented = false;
             await App.MenuDetail.Detail.Navigation.PushAsync(new InsertDocente());
         }
+
+        private async void Button_Add_Cursos(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

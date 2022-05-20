@@ -22,24 +22,24 @@ namespace MateoPumacahua.View.Admin
             GradoPicker.Items.Add("Grado 1");
             GradoPicker.Items.Add("Grado 2");
             GradoPicker.Items.Add("Grado 3");
-            GradoPicker.Items.Add("Grado 4");
-            GradoPicker.Items.Add("Grado 5");
+            //GradoPicker.Items.Add("Grado 4");
+            //GradoPicker.Items.Add("Grado 5");
 
             // añadiendo elementos de seccion
             SeccionPicker.Items.Add("Seccion A");
             SeccionPicker.Items.Add("Seccion B");
             SeccionPicker.Items.Add("Seccion C");
-            SeccionPicker.Items.Add("Seccion D");
-            SeccionPicker.Items.Add("Seccion E");
-            SeccionPicker.Items.Add("Seccion F");
-            SeccionPicker.Items.Add("Seccion G");
-            SeccionPicker.Items.Add("Seccion H");
-            SeccionPicker.Items.Add("Seccion I");
-            SeccionPicker.Items.Add("Seccion J");
+            //SeccionPicker.Items.Add("Seccion D");
+            //SeccionPicker.Items.Add("Seccion E");
+            //SeccionPicker.Items.Add("Seccion F");
+            //SeccionPicker.Items.Add("Seccion G");
+            //SeccionPicker.Items.Add("Seccion H");
+            //SeccionPicker.Items.Add("Seccion I");
+            //SeccionPicker.Items.Add("Seccion J");
 
             // añadir elementos de genero
-            MateriaPicker.Items.Add("Matematicas");
-            MateriaPicker.Items.Add("Comunicacion");
+            //MateriaPicker.Items.Add("Matematicas");
+            //MateriaPicker.Items.Add("Comunicacion");
 
             // añadir elementos de genero
             GeneroPicker.Items.Add("Masculino");

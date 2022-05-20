@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MateoPumacahua.View.Admin.InsertStudent"
              Title="agregar alumno">
+    
     <StackLayout>
-
-     
 
         <Entry Text="{Binding Ide,Mode=TwoWay}"
             Placeholder="Id"
-            PlaceholderColor="Black"/>
+            PlaceholderColor="Black"
+               Keyboard="Numeric"/>
 
         <Entry Text="{Binding Password,Mode=TwoWay}"
             Placeholder="Password"
@@ -29,7 +29,8 @@
 
         <Entry Text="{Binding Correo,Mode=TwoWay}"
             Placeholder="SecondName"
-            PlaceholderColor="Black"/>
+            PlaceholderColor="Black"
+               Keyboard="Email"/>
 
 
         <StackLayout Orientation="Horizontal">
@@ -53,7 +54,11 @@
 
         <Button Text="guardar"
                 Command="{Binding AñadirAlumnoGUI}"/>
+        <Button Text="Actualizar curso"
+                Command="{Binding ActualizarCursosGUI}"/>
 
-
+        <Button Text="Actualizar dias"
+                Command="{Binding ActualizardiasGUI}"/>
+        
     </StackLayout>
 </ContentPage>

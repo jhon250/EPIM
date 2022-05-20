@@ -47,6 +47,18 @@ namespace MateoPumacahua.FireBase
             Alum.IdeDocente == IdAlumno).ToList();
         }
 
+        public async Task<List<Docente>> Grado(string Grado)
+        {
+            // llamamos a mostrar todos los administradores para poder
+            var todosAdministrador = await MostrarDatosDocente();
+
+            // verificamos si existe un administrador mediante (ide y contraseña)
+            // si existe retorna una listar con todos los datos del administrador 
+            // si no retorna una lista vacia
+            return todosAdministrador.Where(Alum =>
+            Alum.Grado == Grado ).ToList();
+        }
+
         // metodo de agragar alumnos
         public async Task AgregarDatosDocente(
             Docente _newDataAlumno)
@@ -63,7 +75,8 @@ namespace MateoPumacahua.FireBase
                     SurName = _newDataAlumno.SurName,
                     SecondName = _newDataAlumno.SecondName,
                     Materia = _newDataAlumno.Materia,
-                   // Grado1 = _newGradoAlumno,
+                    Genero = _newDataAlumno.Genero,
+                    Grado = _newDataAlumno.Grado,
                 });
         }
 
@@ -82,7 +95,7 @@ namespace MateoPumacahua.FireBase
                     SurName = item.Object.SurName,
                     SecondName = item.Object.SecondName,
                     Materia = item.Object.Materia,
-                    Grado1 = item.Object.Grado1,
+                    Grado = item.Object.Grado,
                 }).ToList();
         }
 

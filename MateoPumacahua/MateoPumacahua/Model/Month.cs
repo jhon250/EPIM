@@ -44,6 +44,7 @@ namespace MateoPumacahua.Model
 
     public class Day
     {
+        public string IdDia { get; set; }   
         public string Mes { get; set; }
         public string Fecha { get; set; }
         public string Presente { get; set; }

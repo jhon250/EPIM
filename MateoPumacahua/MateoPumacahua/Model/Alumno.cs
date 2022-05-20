@@ -48,6 +48,7 @@ namespace MateoPumacahua.Model
 
     public class Course
     {
+        public string IdeCurso { get; set; }
         public string Curso { get; set; }
         public string IdeDocenteC { get; set; }
         public string Hora_inicio { get; set; }

@@ -14,6 +14,12 @@ namespace MateoPumacahua.ViewModel.Admin
         // instaciamos el crud alumnos
         DocenteDataFB DocenteFB = new DocenteDataFB();
 
+        #region Constructor
+        public AddDocente()
+        {
+
+        }
+        #endregion
 
         // Atributos
         #region atributos
@@ -122,7 +128,20 @@ namespace MateoPumacahua.ViewModel.Admin
         // ingreso de datos del adminstrador
         public async void insertarDocente()
         {
-
+            string Materias ="";
+            if (ResultGrado=="Grado 1")
+            {
+                Materias = "Quimica";
+            }
+            else if (ResultGrado=="Grado 2")
+            {
+                Materias = "Geografia";
+            }
+            else if (ResultGrado == "Grado 3")
+            {
+                Materias = "Biologia";
+            }
+            
             var Docentes = new Docente()
             {
                 Ide = Ide,
@@ -131,7 +150,9 @@ namespace MateoPumacahua.ViewModel.Admin
                 SurName = SurName,
                 SecondName = SecondName,
                 Correo = Correo,
+                Materia = Materias,
                 Genero = ResultGenero,
+                Grado = ResultGrado,
             };
 
 

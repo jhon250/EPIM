@@ -12,7 +12,7 @@ namespace MateoPumacahua.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VerAsistencias : ContentPage
     {
-        public VerAsistencias()
+        public VerAsistencias(string IDE,string Data)
         {
             InitializeComponent();
         }

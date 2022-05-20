@@ -63,15 +63,15 @@ namespace MateoPumacahua.View
                 {
                     if (Data=="Alumno")
                     {
-                        Navigation.PushAsync(new Cursos(IDE, Data));
+                        Navigation.PushAsync(new VerAsistencias(IDE, Data));
                     }
                     else if (Data=="Docente")
                     {
-                        Navigation.PushAsync(new Cursos(IDE,Data));
+                        Navigation.PushAsync(new Asistencia(IDE,Data));
                     }
                     else
                     {
-                        //Navigation.PushAsync(new Asistencia(IDE,Data));
+                        Navigation.PushAsync(new Cursos(IDE,Data));
                     }
                     
                 })
@@ -111,23 +111,23 @@ namespace MateoPumacahua.View
 
         //}
 
-        public void verificData_Docente(List<Docente> _Docente)
-        {
-            Console.WriteLine(_Docente);
+        //public void verificData_Docente(List<Docente> _Docente)
+        //{
+        //    Console.WriteLine(_Docente);
 
-            foreach (Docente s in _Docente)
-            {
-                Console.WriteLine(s.IdeDocente);
-                Console.WriteLine(s.Ide);
-                Console.WriteLine(s.Password);
-                Console.WriteLine(s.Name);
-                Console.WriteLine(s.SurName);
-                Console.WriteLine(s.SecondName);
-                Console.WriteLine(s.Materia);
-                Console.WriteLine(s.Grado1.Seccion);
+        //    foreach (Docente s in _Docente)
+        //    {
+        //        Console.WriteLine(s.IdeDocente);
+        //        Console.WriteLine(s.Ide);
+        //        Console.WriteLine(s.Password);
+        //        Console.WriteLine(s.Name);
+        //        Console.WriteLine(s.SurName);
+        //        Console.WriteLine(s.SecondName);
+        //        Console.WriteLine(s.Materia);
+        //        Console.WriteLine(s.Grado1.Seccion);
 
-            }
-        }
+        //    }
+        //}
         #endregion
 
         // imagen de mujer "cambiante" link =>

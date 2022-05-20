@@ -8,13 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("MateoPumacahua.View.Admin.InsertDocente.xaml", "View/Admin/InsertDocente.xaml", typeof(global::MateoPumacahua.View.Admin.InsertDocente))]
+[assembly: global::Xamarin.Forms.Xaml.XamlResourceIdAttribute("MateoPumacahua.View.Admin.AddCourse.xaml", "View/Admin/AddCourse.xaml", typeof(global::MateoPumacahua.View.Admin.AddCourse))]
 
 namespace MateoPumacahua.View.Admin {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("View\\Admin\\InsertDocente.xaml")]
-    public partial class InsertDocente : global::Xamarin.Forms.ContentPage {
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("View\\Admin\\AddCourse.xaml")]
+    public partial class AddCourse : global::Xamarin.Forms.ContentPage {
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.Picker MateriaPicker;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Picker GradoPicker;
@@ -27,7 +30,8 @@ namespace MateoPumacahua.View.Admin {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
-            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(InsertDocente));
+            global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(AddCourse));
+            MateriaPicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Picker>(this, "MateriaPicker");
             GradoPicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Picker>(this, "GradoPicker");
             SeccionPicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Picker>(this, "SeccionPicker");
             GeneroPicker = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Picker>(this, "GeneroPicker");

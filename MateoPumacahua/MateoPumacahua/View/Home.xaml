@@ -47,7 +47,7 @@
                                WidthRequest="100"
                                HeightRequest="80"/>
 
-                    <Label Text="Pagina Web Mateo Pumacahu" 
+                    <Label Text="Mis Cursos" 
                            HorizontalTextAlignment="Center"
                            HorizontalOptions="FillAndExpand"
                            FontSize="20"

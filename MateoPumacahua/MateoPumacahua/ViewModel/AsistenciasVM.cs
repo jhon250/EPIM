@@ -17,9 +17,10 @@ namespace MateoPumacahua.ViewModel
         AlumnosDataFB Alumnos = new AlumnosDataFB();
 
         #region Constructor
-        public AsistenciasVM(string grado, string seccion)
+        public AsistenciasVM(string Ide, string Data)
         {
-            _ = LoadData(grado,seccion);
+            string datetime = DateTime.Now.ToString("hh:mmtt");
+            _ = LoadData(Ide,datetime);
             
         }
         #endregion
@@ -28,6 +29,10 @@ namespace MateoPumacahua.ViewModel
         public string _Name;
         public string _SurName;
         public string _SecondName;
+        public string _Fecha;
+        public string _Seccion;
+        public string _Grado;
+        public string _AlumnTotal;
         public bool isRefreshing = false;
         public List<Alumno> listViewSource;
         public string _colorPresente;
@@ -54,6 +59,29 @@ namespace MateoPumacahua.ViewModel
         //    set { SetValue(ref this._SecondName, value); }
         //}
 
+        public string Fecha
+        {
+            get { return this._Fecha; }
+            set { SetValue(ref this._Fecha, value); }
+        }
+
+        public string Seccion
+        {
+            get { return this._Seccion; }
+            set { SetValue(ref this._Seccion, value); }
+        }
+
+        public string Grado
+        {
+            get { return this._Grado; }
+            set { SetValue(ref this._Grado, value); }
+        }
+
+        public string AlumnTotal
+        {
+            get { return this._AlumnTotal; }
+            set { SetValue(ref this._AlumnTotal, value); }
+        }
         public bool IsRefreshing
         {
             get { return isRefreshing; }
@@ -110,11 +138,19 @@ namespace MateoPumacahua.ViewModel
 
 
         #region Methods
-        public async Task LoadData(string grado, string seccion)
+        public async Task LoadData(string IDE,string Hora_Inicio)
         {
-
-            //var list = await Alumnos.MostrarAlumnos_Asistencia(grado, seccion);
-            //ListViewSource = list;
+            List<string> listView = new List<string>();
+            var list = await Alumnos.Data_ListWiew(IDE, Hora_Inicio);
+            foreach (Alumno item in list)
+            {
+                Fecha = Hora_Inicio;
+                Seccion = item.Grado.Seccion;
+                Grado = item.Grado.Grados;
+                break;
+            }
+            AlumnTotal = list.Count.ToString();
+            ListViewSource = await Alumnos.Data_ListWiew(IDE , Hora_Inicio);
             //ColorPresente = "#8D8D88";
         }
 
