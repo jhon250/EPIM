@@ -13,29 +13,30 @@ namespace MateoPumacahua.View.Menu
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Menus : MasterDetailPage
     {
-        public Menus(string IDE,string Data)
+        public Menus(List<User_template> User, string Data)//string IDE,string Data)
         {
             InitializeComponent();
 
             // seleccionando el menu
-            if (Data == "Alumno")
+            if (Data == "Students")
             {
-                this.Master = new MenuDetailAlumno();
-                this.Detail = new NavigationPage(new Home(IDE,Data));
+                this.Master = new MenuDetailAlumno(User,Data);
+                this.Detail = new NavigationPage(new Home(User,Data));
                 App.MenuDetail = this;
             }
-            else if (Data=="Docente")
+            else if (Data== "Teacher")
             {
-                this.Master = new ManuDetailDocente();
-                this.Detail = new NavigationPage(new Home(IDE, Data));
+                this.Master = new ManuDetailDocente(User,Data);
+                this.Detail = new NavigationPage(new Home(User, Data));
                 App.MenuDetail = this;
             }
-            else
+            else if(Data== "Administrator")
             {
                 this.Master = new MenuDetail();
-                this.Detail = new NavigationPage(new Home(IDE, Data));
+                this.Detail = new NavigationPage(new Home(User, Data));
                 App.MenuDetail = this;
             }
+            
         }
 
         

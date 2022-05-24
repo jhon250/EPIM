@@ -12,12 +12,12 @@ namespace MateoPumacahua.ViewModel.Admin
     {
 
         // instaciamos el crud alumnos
-        DocenteDataFB DocenteFB = new DocenteDataFB();
+        DataBaseFB User_FB = new DataBaseFB();
 
         #region Constructor
         public AddDocente()
         {
-
+            
         }
         #endregion
 
@@ -30,8 +30,8 @@ namespace MateoPumacahua.ViewModel.Admin
         public string _SurName;
         public string _SecondName;
         public string _Correo;
+        public string _Phone;
         public string _Materia;
-        public object _Grado1;
         public string _ResultMateria;
         public string _GradoALVM;
         public string _SeccionALVM;
@@ -46,6 +46,12 @@ namespace MateoPumacahua.ViewModel.Admin
         {
             get { return this.GeneroALVM; }
             set { SetValue(ref this.GeneroALVM, value); }
+        }
+
+        public string Phone
+        {
+            get { return this._Phone; }
+            set { SetValue(ref this._Phone, value); }
         }
 
         public int Ide
@@ -90,12 +96,6 @@ namespace MateoPumacahua.ViewModel.Admin
             set { SetValue(ref this._Materia, value); }
         }
 
-        public object Grado1
-        {
-            get { return this._Grado1; }
-            set { SetValue(ref this._Grado1, value); }
-        }
-
         public string ResultMateria
         {
             get { return this._ResultMateria; }
@@ -120,43 +120,34 @@ namespace MateoPumacahua.ViewModel.Admin
 
 
         // comando del boton Añadir alumno
-        public ICommand AñadirDocenteGUI => new Command(insertarDocente);
-        
+        public ICommand AñadirDocenteGUI => new Command(insertDocente);
 
 
+
+        #region Metodos
 
         // ingreso de datos del adminstrador
-        public async void insertarDocente()
+        public async void insertDocente()
         {
-            string Materias ="";
-            if (ResultGrado=="Grado 1")
+
+            var i = new Teacher_template() { };
+            var Teacher = new User_template()
             {
-                Materias = "Quimica";
-            }
-            else if (ResultGrado=="Grado 2")
-            {
-                Materias = "Geografia";
-            }
-            else if (ResultGrado == "Grado 3")
-            {
-                Materias = "Biologia";
-            }
-            
-            var Docentes = new Docente()
-            {
-                Ide = Ide,
+                Ide = Ide.ToString(),
                 Password = Password,
                 Name = Name,
-                SurName = SurName,
+                FirstName = SurName,
                 SecondName = SecondName,
                 Correo = Correo,
-                Materia = Materias,
+                Phone = Phone,
+                Materia = ResultMateria,
                 Genero = ResultGenero,
                 Grado = ResultGrado,
+                Seccion = ResultSeccion,
             };
 
 
-            await DocenteFB.AgregarDatosDocente(Docentes);
+            await User_FB.Create_Users_Tables(Teacher, "Teacher",i);
 
             LimpiarEntry();
 
@@ -170,10 +161,13 @@ namespace MateoPumacahua.ViewModel.Admin
             Name = "";
             SurName = "";
             SecondName = "";
+            Phone = "";
             ResultMateria = "";
             ResultGrado = "";
             ResultSeccion = "";
+            ResultGenero = "";
         }
+        #endregion
 
     }
 }

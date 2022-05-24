@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MateoPumacahua.Model;
+using MateoPumacahua.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,10 @@ namespace MateoPumacahua.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VerAsistencias : ContentPage
     {
-        public VerAsistencias(string IDE,string Data)
+        public VerAsistencias(List<User_template> User,string Data)
         {
             InitializeComponent();
+            BindingContext = new VerAsistenciasVM(User, Data);
         }
     }
 }

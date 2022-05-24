@@ -64,19 +64,15 @@ namespace MateoPumacahua.FireBase
         {
             var AllAlumno = await MostrarDatosAlumno();
             return AllAlumno.Where(Alum =>
-            (Alum.Grado.IdeDocenteG == IdeDocente)
-            &&
-            (Alum.Grado.Cursoss.IdeDocenteC == IdeDocente && Alum.Grado.Cursoss.Hora_inicio == Hora_Inicio)).ToList();
+            Alum.Grado.Cursoss.IdeDocenteC == IdeDocente && Alum.Grado.Cursoss.Hora_inicio == Hora_Inicio).ToList();
         }
 
-        
-
-        public async Task<List<Alumno>> ActualizarDocente(string Grado, string Seccion)
-        {
-            var da = await MostrarDatosAlumno();
-            return da.Where(Alum =>
-            Alum.Grado.Grados == Grado && Alum.Grado.Seccion == Seccion).ToList();
-        }
+//public async Task<List<Alumno>> ActualizarDocente(string Grado, string Seccion)
+        //{
+        //    var da = await MostrarDatosAlumno();
+        //    return da.Where(Alum =>
+        //    Alum.Grado.Grados == Grado && Alum.Grado.Seccion == Seccion).ToList();
+        //}
 
         //public async Task Actualizar_Alumno(Alumno upAlumno)
         //{
@@ -125,10 +121,7 @@ namespace MateoPumacahua.FireBase
                     Grado = item.Object.Grado,
                 }).ToList();
         }
-
-
-
-        //public async Task<List<Alumno>> MostrarAlumnos_Asistencia(int Grado,string Seccion,string IdeDocente)
+       //public async Task<List<Alumno>> MostrarAlumnos_Asistencia(int Grado,string Seccion,string IdeDocente)
         //{
         //    var Alumn = await MostrarDatosAlumno();
         //    if (Grado == 1)
@@ -164,8 +157,6 @@ namespace MateoPumacahua.FireBase
         //    //return Alumn.Where(Alum =>
         //    //Alum.Grado1.Seccion == Seccion).ToList();
         //}
-
-
     }
 
     public class DataBase

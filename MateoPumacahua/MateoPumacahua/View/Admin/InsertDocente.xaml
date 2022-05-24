@@ -3,41 +3,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MateoPumacahua.View.Admin.InsertDocente"
              Title="agregar Docente">
+    
     <StackLayout>
 
         <Entry Text="{Binding Ide,Mode=TwoWay}"
             Placeholder="Id"
             PlaceholderColor="Black"
+               ClearButtonVisibility="WhileEditing"
+
+               ReturnType="Next"
                Keyboard="Numeric"/>
 
         <Entry Text="{Binding Password,Mode=TwoWay}"
+               ClearButtonVisibility="WhileEditing"
+            ReturnType="Next"
             Placeholder="contraseña"
             PlaceholderColor="Black"/>
 
         <Entry Text="{Binding Name,Mode=TwoWay}"
+               ClearButtonVisibility="WhileEditing"
+               ReturnType="Next"
             Placeholder="Nombre"
             PlaceholderColor="Black"/>
 
         <Entry Text="{Binding SurName,Mode=TwoWay}"
+               ClearButtonVisibility="WhileEditing"
+               ReturnType="Next"
             Placeholder="Apellido Paterno"
             PlaceholderColor="Black"/>
 
         <Entry Text="{Binding SecondName,Mode=TwoWay}"
+               ClearButtonVisibility="WhileEditing"
+               ReturnType="Next"
             Placeholder="Apellido Materno"
             PlaceholderColor="Black"/>
 
         <Entry Text="{Binding Correo,Mode=TwoWay}"
+               ClearButtonVisibility="WhileEditing"
+               ReturnType="Next"
             Placeholder="Correo"
             PlaceholderColor="Black"
                Keyboard="Email"/>
 
-        <StackLayout Orientation="Horizontal">
+        <Entry Text="{Binding Phone,Mode=TwoWay}"
+               ClearButtonVisibility="WhileEditing"
+               ReturnType="Next"
+            Placeholder="Celular"
+            PlaceholderColor="Black"
+               Keyboard="Email"/>
 
-            <!--<Picker x:Name="MateriaPicker"
-                    ItemsSource="{Binding Materia}"
-                        Title="Materia"
-                        HorizontalOptions="StartAndExpand"
-                        SelectedItem="{Binding ResultMateria}"/>-->
+        <StackLayout Orientation="Horizontal">
 
             <Picker x:Name="GradoPicker"
                         Title="selecione grado"
@@ -54,6 +69,11 @@
                         HorizontalOptions="StartAndExpand"
                         SelectedItem="{Binding ResultGenero}"/>
 
+            <Picker x:Name="MateriaPicker"
+                    ItemsSource="{Binding Materia}"
+                        Title="Materia"
+                        HorizontalOptions="StartAndExpand"
+                        SelectedItem="{Binding ResultMateria}"/>
 
         </StackLayout>
 

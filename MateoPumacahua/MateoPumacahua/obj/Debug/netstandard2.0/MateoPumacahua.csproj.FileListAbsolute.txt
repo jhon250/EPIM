@@ -41,7 +41,6 @@ A:\XAMARIN_FORMS\Elaboracion_Proyecto_Senati\MateoPumacahua\MateoPumacahua\Mateo
 A:\XAMARIN_FORMS\Elaboracion_Proyecto_Senati\MateoPumacahua\MateoPumacahua\MateoPumacahua\obj\Debug\netstandard2.0\View\Asistencia.xaml.g.cs
 A:\XAMARIN_FORMS\Elaboracion_Proyecto_Senati\MateoPumacahua\MateoPumacahua\MateoPumacahua\obj\Debug\netstandard2.0\View\Admin\InsertDocente.xaml.g.cs
 A:\XAMARIN_FORMS\Elaboracion_Proyecto_Senati\MateoPumacahua\MateoPumacahua\MateoPumacahua\obj\Debug\netstandard2.0\View\Menu\MenuDetail.xaml.g.cs
-A:\XAMARIN_FORMS\Elaboracion_Proyecto_Senati\MateoPumacahua\MateoPumacahua\MateoPumacahua\obj\Debug\netstandard2.0\View\Page.xaml.g.cs
 A:\XAMARIN_FORMS\Elaboracion_Proyecto_Senati\MateoPumacahua\MateoPumacahua\MateoPumacahua\obj\Debug\netstandard2.0\View\Menu\ManuDetailDocente.xaml.g.cs
 A:\XAMARIN_FORMS\Elaboracion_Proyecto_Senati\MateoPumacahua\MateoPumacahua\MateoPumacahua\obj\Debug\netstandard2.0\View\Menu\MenuDetailAlumno.xaml.g.cs
 A:\XAMARIN_FORMS\Elaboracion_Proyecto_Senati\MateoPumacahua\MateoPumacahua\MateoPumacahua\obj\Debug\netstandard2.0\View\Menu\Menus.xaml.g.cs

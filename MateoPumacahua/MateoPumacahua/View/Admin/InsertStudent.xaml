@@ -3,40 +3,59 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MateoPumacahua.View.Admin.InsertStudent"
              Title="agregar alumno">
-    
+
     <StackLayout>
 
         <Entry Text="{Binding Ide,Mode=TwoWay}"
             Placeholder="Id"
             PlaceholderColor="Black"
+               ClearButtonVisibility="WhileEditing"
+
+               ReturnType="Next"
                Keyboard="Numeric"/>
 
         <Entry Text="{Binding Password,Mode=TwoWay}"
-            Placeholder="Password"
+               ClearButtonVisibility="WhileEditing"
+            ReturnType="Next"
+            Placeholder="contraseña"
             PlaceholderColor="Black"/>
 
         <Entry Text="{Binding Name,Mode=TwoWay}"
-            Placeholder="Name"
+               ClearButtonVisibility="WhileEditing"
+               ReturnType="Next"
+            Placeholder="Nombre"
             PlaceholderColor="Black"/>
 
         <Entry Text="{Binding SurName,Mode=TwoWay}"
-            Placeholder="surName"
+               ClearButtonVisibility="WhileEditing"
+               ReturnType="Next"
+            Placeholder="Apellido Paterno"
             PlaceholderColor="Black"/>
 
         <Entry Text="{Binding SecondName,Mode=TwoWay}"
-            Placeholder="SecondName"
+               ClearButtonVisibility="WhileEditing"
+               ReturnType="Next"
+            Placeholder="Apellido Materno"
             PlaceholderColor="Black"/>
 
         <Entry Text="{Binding Correo,Mode=TwoWay}"
-            Placeholder="SecondName"
+               ClearButtonVisibility="WhileEditing"
+               ReturnType="Next"
+            Placeholder="Correo"
             PlaceholderColor="Black"
                Keyboard="Email"/>
 
+        <Entry Text="{Binding Phone,Mode=TwoWay}"
+               ClearButtonVisibility="WhileEditing"
+               ReturnType="Next"
+            Placeholder="Celular"
+            PlaceholderColor="Black"
+               Keyboard="Email"/>
 
         <StackLayout Orientation="Horizontal">
 
             <Picker x:Name="GradoPicker"
-                        Title="Grado"
+                        Title="selecione grado"
                         HorizontalOptions="StartAndExpand"
                         SelectedItem="{Binding ResultGrado}"/>
 
@@ -50,15 +69,15 @@
                         HorizontalOptions="StartAndExpand"
                         SelectedItem="{Binding ResultGenero}"/>
 
+
         </StackLayout>
 
         <Button Text="guardar"
-                Command="{Binding AñadirAlumnoGUI}"/>
-        <Button Text="Actualizar curso"
-                Command="{Binding ActualizarCursosGUI}"/>
+                Command="{Binding AñadirDocenteGUI}"/>
 
-        <Button Text="Actualizar dias"
-                Command="{Binding ActualizardiasGUI}"/>
-        
+        <Button Text="Data_add"
+                Command="{Binding Data_AddGUI}"/>
+
+
     </StackLayout>
 </ContentPage>

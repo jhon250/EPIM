@@ -14,11 +14,11 @@ namespace MateoPumacahua.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MiPerfil : ContentPage
     {
-        public MiPerfil(string IDE, string Data)
+        public MiPerfil(List<User_template> User, string Data)
         {
             InitializeComponent();
 
-            BindingContext = new MiPerfilVM(IDE,Data);
+            BindingContext = new MiPerfilVM(User,Data);
         }
     }
 }

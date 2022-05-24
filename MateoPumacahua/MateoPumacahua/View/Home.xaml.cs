@@ -13,7 +13,7 @@ namespace MateoPumacahua.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Home : ContentPage
     {
-        public Home(string IDE, string Data)
+        public Home(List<User_template> User, string Data)
         {
             InitializeComponent();
             #region Pruevas
@@ -34,6 +34,7 @@ namespace MateoPumacahua.View
 
             //}
             #endregion
+            
 
             #region LLamando comandos
             // llamando a frame Mi Cuenta
@@ -41,7 +42,7 @@ namespace MateoPumacahua.View
             {
                 Command = new Command(() =>
                 {
-                    Navigation.PushAsync(new MiPerfil(IDE,Data));
+                    Navigation.PushAsync(new MiPerfil(User,Data));
                 })
             });
 
@@ -51,7 +52,7 @@ namespace MateoPumacahua.View
             {
                 Command = new Command(() =>
                 {
-                    Navigation.PushAsync(new Page());
+                    Navigation.PushAsync(new Cursos(User,Data));
                 })
             });
 
@@ -61,19 +62,19 @@ namespace MateoPumacahua.View
             {
                 Command = new Command(() =>
                 {
-                    if (Data=="Alumno")
+                    if (Data == "Students")
                     {
-                        Navigation.PushAsync(new VerAsistencias(IDE, Data));
+                        Navigation.PushAsync(new VerAsistencias(User, Data));
                     }
-                    else if (Data=="Docente")
+                    else if (Data == "Teacher")
                     {
-                        Navigation.PushAsync(new Asistencia(IDE,Data));
+                        Navigation.PushAsync(new Asistencia(User, Data));
                     }
                     else
                     {
-                        Navigation.PushAsync(new Cursos(IDE,Data));
+                        Navigation.PushAsync(new Cursos(User, Data));
                     }
-                    
+                    //Navigation.PushAsync(new Asistencia(User,Data));
                 })
             });
 

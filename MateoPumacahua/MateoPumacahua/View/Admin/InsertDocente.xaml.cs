@@ -38,8 +38,8 @@ namespace MateoPumacahua.View.Admin
             //SeccionPicker.Items.Add("Seccion J");
 
             // añadir elementos de genero
-            //MateriaPicker.Items.Add("Matematicas");
-            //MateriaPicker.Items.Add("Comunicacion");
+            MateriaPicker.Items.Add("Matematicas");
+            MateriaPicker.Items.Add("Comunicacion");
 
             // añadir elementos de genero
             GeneroPicker.Items.Add("Masculino");

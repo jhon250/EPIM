@@ -44,6 +44,7 @@
                            TextColor="Black"/>
                     <Entry Text="{Binding Ide}"
                            ClearButtonVisibility="WhileEditing"
+                           ReturnType="Next"
                            TextColor="{Binding Color}"
                            IsReadOnly="{Binding Edita}"/>
 
@@ -51,6 +52,7 @@
                            TextColor="Black"/>
                     <Entry Text="{Binding Name}"
                            ClearButtonVisibility="WhileEditing"
+                           ReturnType="Next"
                            TextColor="{Binding Color}"
                            IsReadOnly="{Binding Edita}"/>
 
@@ -58,6 +60,7 @@
                            TextColor="Black"/>
                     <Entry Text="{Binding SurName}"
                            ClearButtonVisibility="WhileEditing"
+                           ReturnType="Next"
                            TextColor="{Binding Color}"
                            IsReadOnly="{Binding Edita}"/>
 
@@ -65,13 +68,50 @@
                            TextColor="Black"/>
                     <Entry Text="{Binding SecondName}"
                            ClearButtonVisibility="WhileEditing"
+                           ReturnType="Next"
                            TextColor="{Binding Color}"
                            IsReadOnly="{Binding Edita}"/>
 
-                    <Label Text="telefono"
+                    <Label Text="Correo"
                            TextColor="Black"/>
                     <Entry Text="{Binding Correo}"
                            ClearButtonVisibility="WhileEditing"
+                           ReturnType="Next"
+                           TextColor="{Binding Color}"
+                           IsReadOnly="{Binding Edita}"/>
+
+                    <Label Text="Telefono"
+                           TextColor="Black"/>
+                    <Entry Text="{Binding Phone}"
+                           ClearButtonVisibility="WhileEditing"
+                           ReturnType="Next"
+                           TextColor="{Binding Color}"
+                           IsReadOnly="{Binding Edita}"
+                           Keyboard="Numeric"/>
+
+                    <Label Text="Grado"
+                           TextColor="Black"/>
+                    <Entry Text="{Binding Grado}"
+                           ClearButtonVisibility="WhileEditing"
+                           ReturnType="Next"
+                           TextColor="{Binding Color}"
+                           IsReadOnly="{Binding Edita}"/>
+
+                    <Label Text="Seccion"
+                           TextColor="Black"/>
+                    <Entry Text="{Binding Seccion}"
+                           ClearButtonVisibility="WhileEditing"
+                           ReturnType="Next"
+                           TextColor="{Binding Color}"
+                           IsReadOnly="{Binding Edita}"/>
+
+                    <Label Text="Materia"
+                           TextColor="Black"
+                           IsVisible="{Binding Visible}"/>
+                    <Entry Text="{Binding Materia}"
+                           IsVisible="{Binding Visible}"
+                           ClearButtonVisibility="WhileEditing"
+                           ReturnType="Next"
                            TextColor="{Binding Color}"
                            IsReadOnly="{Binding Edita}"/>
 

@@ -13,14 +13,16 @@ namespace MateoPumacahua.ViewModel
 {
     public class AsistenciasVM : BaseViewModel
     {
-
-        AlumnosDataFB Alumnos = new AlumnosDataFB();
-
+        DataBaseFB DataBase_FB = new DataBaseFB();
+        //AlumnosDataFB Alumnos = new AlumnosDataFB();
+        List<User_template> Asistencias;
+        string data;
         #region Constructor
-        public AsistenciasVM(string Ide, string Data)
+        public AsistenciasVM(List<User_template> User, string Data)
         {
-            string datetime = DateTime.Now.ToString("hh:mmtt");
-            _ = LoadData(Ide,datetime);
+            Asistencias = User;
+            data = Data;
+             LoadData(User,Data);
             
         }
         #endregion
@@ -34,7 +36,7 @@ namespace MateoPumacahua.ViewModel
         public string _Grado;
         public string _AlumnTotal;
         public bool isRefreshing = false;
-        public List<Alumno> listViewSource;
+        public List<ListView_student_template> listViewSource;
         public string _colorPresente;
         public string _colorTarde;
         public string _colorFalta;
@@ -88,99 +90,255 @@ namespace MateoPumacahua.ViewModel
             set { SetValue(ref this.isRefreshing, value); }
         }
 
-        public List<Alumno> ListViewSource
+        public List<ListView_student_template> ListViewSource
         {
 
             get { return this.listViewSource; }
             set { SetValue(ref this.listViewSource, value); }
         }
 
-        public string ColorPresente
-        {
-            get { return this._colorPresente; }
-            set { SetValue(ref this._colorPresente, value); }
-        }
+        //public string ColorPresente
+        //{
+        //    get { return this._colorPresente; }
+        //    set { SetValue(ref this._colorPresente, value); }
+        //}
 
-        public string ColorTarde
-        {
-            get { return this._colorTarde; }
-            set { SetValue(ref this._colorTarde, value); }
-        }
+        //public string ColorTarde
+        //{
+        //    get { return this._colorTarde; }
+        //    set { SetValue(ref this._colorTarde, value); }
+        //}
 
-        public string ColorFalta
-        {
-            get { return this._colorFalta; }
-            set { SetValue(ref this._colorFalta, value); }
-        }
+        //public string ColorFalta
+        //{
+        //    get { return this._colorFalta; }
+        //    set { SetValue(ref this._colorFalta, value); }
+        //}
         #endregion
         //-N1c0Jmr_ZH77iE8Rr8T
         #region Commands
-        //public void SelectedItem(object sender, SelectedItemChangedEventArgs e)
-        //{
-        //    Console.WriteLine(e.SelectedItem);
-        //}
-        //public ICommand Presente
-        //{
-        //    get
-        //    {
-        //        return new Command((e) =>
-        //        {
-        //            var item = e as ICommand;
-        //        });
-        //    }
-        //}
-
-        //public ICommand SelectedItem => new Command(selectItem);
-        public ICommand Presente => new Command<Alumno>(async(A) => await SelectItems_Present(A));
-        //public ICommand Tarde => new Command<Alumno>(async (A) => await SelectItems(A));
-        //public ICommand Falta => new Command<Alumno>(async (A) => await SelectItems(A));
+        
+        public ICommand Presente => new Command<ListView_student_template>((A) =>  SelectItems_Present(A));
+        public ICommand Tarde => new Command<ListView_student_template>( (A) =>  SelectItems_Delay(A));
+        public ICommand Falta => new Command<ListView_student_template>( (A) =>  SelectItems_Adsent(A));
         #endregion
 
 
         #region Methods
-        public async Task LoadData(string IDE,string Hora_Inicio)
+        public async void LoadData(List<User_template> User,string Table)
         {
-            List<string> listView = new List<string>();
-            var list = await Alumnos.Data_ListWiew(IDE, Hora_Inicio);
-            foreach (Alumno item in list)
+            List<ListView_student_template> ListviewSource = new List<ListView_student_template>();
+            if (ListviewSource.Count == 0)
             {
-                Fecha = Hora_Inicio;
-                Seccion = item.Grado.Seccion;
-                Grado = item.Grado.Grados;
-                break;
+                //Console.WriteLine("lista"+ListviewSource.Count);
+                foreach (var item in User)
+                {
+                    var Users_FB = await DataBase_FB.Query_Info_Tables(
+                        item.Grado,
+                        item.Seccion,
+                        item.Materia);
+                    string datetime = "7:35 AM";//DateTime.Now.ToString("hh:mm tt");
+                    string date = DateTime.Now.Date.ToString("dd-MM-yyyy");
+
+                    Fecha = date;
+                    Seccion = item.Seccion;
+                    Grado = item.Grado;
+                    AlumnTotal = Users_FB.Count.ToString();
+
+                    foreach (var item2 in Users_FB)
+                    {
+                        if (true)//(int.Parse(item2.StartTime.Substring(0, 1)) > int.Parse(datetime.Substring(0, 1)))
+                            //&& (int.Parse(item2.StartTime.Substring(3, 4)) < int.Parse(datetime.Substring(3, 4))))
+                        {
+                            //Console.WriteLine(item2.KeyData);
+                            var day = await DataBase_FB.Query_Day_Tables(
+                            item.Grado,
+                            item.Seccion,
+                            item.Materia,
+                            item2.KeyData,
+                            date);
+                            //Console.WriteLine(day.Count);
+                            var Users = await DataBase_FB.Query_Users_Tables_Selected_Id("Students", item2.IdeStudent);
+                            foreach (var item3 in Users)
+                            {
+                                //Console.WriteLine(item3.Name);
+                                var data_list = new ListView_student_template()
+                                {
+                                    KeyUsers = item2.IdeStudent,
+                                    KeyCourse = item2.KeyData,
+                                    Keyday = day[0].Ides,
+                                    Materia = item.Materia,
+                                    Name = item3.Name,
+                                    FirstName = item3.FirstName,
+                                    SecondName = item3.SecondName,
+                                    Grado = item.Grado,
+                                    Seccion = item.Seccion,
+                                    Present = day[0].Present,
+                                    Delay = day[0].Delay,
+                                    Absent = day[0].Absent,
+                                };
+
+                                ListviewSource.Add(data_list);
+                            }
+
+                        }
+                        else { break; }
+                    }
+                }
             }
-            AlumnTotal = list.Count.ToString();
-            ListViewSource = await Alumnos.Data_ListWiew(IDE , Hora_Inicio);
-            //ColorPresente = "#8D8D88";
-        }
-
-        public async Task SelectItems_Present(Alumno A)
-        {
-            ColorPresente = "Red";
-             await App.Current.MainPage.DisplayAlert(
-                      "Selected item", A.IdeAlumno
-                       , "OK");
-        }
-
-        public  void Present()
-        {
             
-            //var data = _SelectedItem.Name;
-            //Alumno allumno = _SelectedItem;
-            //try
-            //{
-
-            //    await App.Current.MainPage.DisplayAlert(
-            //          "",SelectedItem.GetType().Name
-            //           , "OK"); ;
-            //}catch (Exception)
-            //{
-            //    await App.Current.MainPage.DisplayAlert(
-            //          "error", "vacio"
-            //           ,
-            //          "OK");
-            //}
+            Console.WriteLine(ListviewSource.Count);
+            this.ListViewSource =  ListviewSource;
+          
         }
+
+        public async void SelectItems_Present(ListView_student_template A)
+        {
+                string date = DateTime.Now.Date.ToString("dd-MM-yyyy");
+            if (A.Present == "#9CA29A")
+            {
+                var update = new Day_template()
+                {
+                    Present = "#1AF72A",
+                    Delay = "#9CA29A",
+                    Absent = "#9CA29A",
+                };
+                await DataBase_FB.Query_update_query_tables(
+                    A.Grado,
+                    A.Seccion,
+                    A.Materia,
+                    A.KeyCourse,
+                    date,
+                    A.Keyday,
+                    update);
+                LoadData(Asistencias, data);
+            }
+            else if (A.Present == "#1AF72A")
+            {
+                var update = new Day_template()
+                {
+                    Present = "#9CA29A",
+                    Delay = A.Delay,
+                    Absent = A.Absent,
+                };
+                await DataBase_FB.Query_update_query_tables(
+                    A.Grado,
+                    A.Seccion,
+                    A.Materia,
+                    A.KeyCourse,
+                    date,
+                    A.Keyday,
+                    update);
+                LoadData(Asistencias, data);
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert(
+                 "E R R O R -- Asistencias",
+                 "Asistencia no tomada",
+                 "OK");
+            }
+            
+        }
+
+        public async void SelectItems_Delay(ListView_student_template A)
+        {
+            string date = DateTime.Now.Date.ToString("dd-MM-yyyy");
+            if (A.Delay == "#9CA29A")
+            {
+                var update = new Day_template()
+                {
+                    Present = "#9CA29A",
+                    Delay = "#F4F71A",
+                    Absent = "#9CA29A",
+                };
+                await DataBase_FB.Query_update_query_tables(
+                    A.Grado,
+                    A.Seccion,
+                    A.Materia,
+                    A.KeyCourse,
+                    date,
+                    A.Keyday,
+                    update);
+                LoadData(Asistencias, data);
+            }
+            else if (A.Delay == "#F4F71A")
+            {
+                var update = new Day_template()
+                {
+                    Present = "#9CA29A",
+                    Delay = "#9CA29A",
+                    Absent = "#9CA29A",
+                };
+                await DataBase_FB.Query_update_query_tables(
+                    A.Grado,
+                    A.Seccion,
+                    A.Materia,
+                    A.KeyCourse,
+                    date,
+                    A.Keyday,
+                    update);
+                LoadData(Asistencias, data);
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert(
+                 "E R R O R -- Asistencias",
+                 "Asistencia no tomada",
+                 "OK");
+            }
+        }
+
+        public async void SelectItems_Adsent(ListView_student_template A)
+        {
+            string date = DateTime.Now.Date.ToString("dd-MM-yyyy");
+            if (A.Absent == "#9CA29A")
+            {
+                var update = new Day_template()
+                {
+                    Present = "#9CA29A",
+                    Delay = "#9CA29A",
+                    Absent = "#FF0000",
+                };
+                await DataBase_FB.Query_update_query_tables(
+                    A.Grado,
+                    A.Seccion,
+                    A.Materia,
+                    A.KeyCourse,
+                    date,
+                    A.Keyday,
+                    update);
+                LoadData(Asistencias, data);
+            }
+            else if (A.Absent == "#FF0000")
+            {
+                var update = new Day_template()
+                {
+                    Present = "#9CA29A",
+                    Delay = "#9CA29A",
+                    Absent = "#9CA29A",
+                };
+                await DataBase_FB.Query_update_query_tables(
+                    A.Grado,
+                    A.Seccion,
+                    A.Materia,
+                    A.KeyCourse,
+                    date,
+                    A.Keyday,
+                    update);
+                LoadData(Asistencias, data);
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert(
+                 "E R R O R -- Asistencias",
+                 "Asistencia no tomada",
+                 "OK");
+            }
+        }
+
+       
+
         #endregion
 
     }

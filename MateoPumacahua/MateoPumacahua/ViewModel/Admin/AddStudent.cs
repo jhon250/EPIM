@@ -5,37 +5,54 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace MateoPumacahua.ViewModel.Admin
 {
     public class AddStudent : BaseViewModel
     {
         // instaciamos el crud alumnos
-        AlumnosDataFB AlumnosFB = new AlumnosDataFB();
-        //DataBase datas = new DataBase();
-        AdminDataFB AdminFB = new AdminDataFB();
-        DocenteDataFB DocenteFB = new DocenteDataFB();
+        DataBaseFB User_FB = new DataBaseFB();
+
+        #region Constructor
+        public AddStudent()
+        {
+
+        }
+        #endregion
 
         // Atributos
-        #region
+        #region atributos
 
-        
         public int _Ide;
         public string _Password;
         public string _Name;
         public string _SurName;
         public string _SecondName;
         public string _Correo;
-        public object _Grado1;
+        public string _Phone;
+        public string _ResultMateria;
+        public string _GradoALVM;
+        public string _SeccionALVM;
         public string GeneroALVM;
-        public string GradoALVM;
-        public string SeccionALVM; 
 
         #endregion
 
 
         // Propiedades
         #region Propiedades
+        public string ResultGenero
+        {
+            get { return this.GeneroALVM; }
+            set { SetValue(ref this.GeneroALVM, value); }
+        }
+
+        public string Phone
+        {
+            get { return this._Phone; }
+            set { SetValue(ref this._Phone, value); }
+        }
+
         public int Ide
         {
             get { return this._Ide; }
@@ -72,190 +89,129 @@ namespace MateoPumacahua.ViewModel.Admin
             set { SetValue(ref this._Correo, value); }
         }
 
-        public object Grado1
+        public string ResultMateria
         {
-            get { return this._Grado1; }
-            set { SetValue(ref this._Grado1, value); }
+            get { return this._ResultMateria; }
+            set { SetValue(ref this._ResultMateria, value); }
         }
 
         // object
         public string ResultGrado
         {
-            get { return this.GradoALVM; }
-            set { SetValue(ref this.GradoALVM, value); }
+            get { return this._GradoALVM; }
+            set { SetValue(ref this._GradoALVM, value); }
         }
 
         public string ResultSeccion
         {
-            get { return this.SeccionALVM; }
-            set { SetValue(ref this.SeccionALVM, value); }
+            get { return this._SeccionALVM; }
+            set { SetValue(ref this._SeccionALVM, value); }
         }
 
-        public string ResultGenero
-        {
-            get { return this.GeneroALVM; }
-            set { SetValue(ref this.GeneroALVM, value); }
-        }
 
         #endregion
 
-
+        #region Comandos
         // comando del boton Añadir alumno
-        public ICommand AñadirAlumnoGUI
-        {
-            get
-            {
-                // llamamos al metodo Inicio Sesion cuando
-                // presione el boton
-                return new RelayCommand(insertarAlumno);
-            }
-        }
+        public ICommand AñadirDocenteGUI => new Command(InsertDocente);
+        public ICommand Data_AddGUI => new Command(Data_Add);
 
-        public ICommand ActualizarCursosGUI
-        {
-            get
-            {
-                // llamamos al metodo Inicio Sesion cuando
-                // presione el boton
-                return new RelayCommand(insertarCursos);
-            }
-        }
+        #endregion
 
-        public ICommand ActualizardiasGUI
-        {
-            get
-            {
-                // llamamos al metodo Inicio Sesion cuando
-                // presione el boton
-                return new RelayCommand(insertarCursos);
-            }
-        }
+        #region Metodos
 
         // ingreso de datos del adminstrador
-        public async void insertarAlumno()
+        public async void InsertDocente()
         {
-            
-            var GradoAlumno = new Grado()
-            {
-                Grados = ResultGrado,
-                Seccion = ResultSeccion,
-                
-                
-            };
 
-            var Alumnos = new Alumno()
+            var i = new Teacher_template() { };
+            var Student = new User_template()
             {
-                Ide = Ide,
+                Ide = Ide.ToString(),
                 Password = Password,
                 Name = Name,
-                SurName = SurName,
+                FirstName = SurName,
                 SecondName = SecondName,
                 Correo = Correo,
-                Genero = ResultGenero,    
+                Phone = Phone,
+                Genero = ResultGenero,
+                Grado = ResultGrado,
+                Seccion = ResultSeccion,
             };
 
-            await AlumnosFB.AgregarDatosAlumno(Alumnos, GradoAlumno);
+            await User_FB.Create_Users_Tables(Student, "Students", i);
 
-            //LimpiarEntry();
-
-
-        }
-        public async void insertarCursos()
-        {
-
-            #region horas 
-
-            List<string> hora = new List<string>();
-            hora.Add("07:30 AM");
-            hora.Add("09:00 AM");
-            hora.Add("10:20 AM");
-            hora.Add("12:00 AM");
-            hora.Add("01:59 PM");
-            hora.Add("03:00 PM");
-            hora.Add("05:20 PM");
-
-            List<string> hora_fin = new List<string>();
-            hora_fin.Add("08:59 AM");
-            hora_fin.Add("09:59 AM");
-            hora_fin.Add("11:40 AM");
-            hora_fin.Add("01:00 PM");
-            hora_fin.Add("02:59 PM");
-            hora_fin.Add("04:59 PM");
-            hora_fin.Add("06:30 PM");
-
-            #endregion
-
-            var profes = await DocenteFB.Grado(ResultGrado);
-            var Alumnos = await AlumnosFB.Iniciar(ResultGrado);
-
-            int op = 0;int po = 0;
-            foreach (var profe in profes)//3secciones
+            var cursos =  User_FB.Course_List(ResultGrado);
+            var startTime = User_FB.Start_Time_List();
+            var endTime = User_FB.End_Time_List();
+            for (int j = 1; j <= cursos.Count; j++)
             {
-                //Console.WriteLine("profe - "+profe.Name);
-                foreach (var alum in Alumnos)//10
+                var Alumn = new Info_Users_Template()
                 {
-                    DataBase datas = new DataBase(alum.IdeAlumno);
-                    //int op = 0;
-                    //Console.WriteLine("Alumno - "+alum.Name);break;
-                    if (op==7 && po==7 ) { op = 0;po = 0; }
-                    
-                    var curs = new Course()
-                    {
+                    IdeStudent = Ide.ToString(),
+                    IdeTeacher = "",
+                    StartTime = startTime[j],
+                    EndTime = endTime[j],
+                };
+                // creando data_teplate
+                User_FB.Create_Data_template(
+                    ResultGrado,
+                    ResultSeccion,
+                    cursos[j],
+                    Alumn);
+                await App.Current.MainPage.DisplayAlert("Datos", "Datos guardados", "OK");
+                // consultando data_teplate creada
+                var Course_data = await User_FB.Query_Info_Tables_Ide(
+                    ResultGrado,
+                    ResultSeccion,
+                    cursos[j],
+                    Ide.ToString());
 
-                        Curso = profe.Materia,
-                        Hora_inicio = hora[op++],
-                        Hora_fin = hora_fin[po++],
-                        IdeDocenteC = profe.IdeDocente,
-                    };
-                    datas.Fun(curs);
-                    var Curso = await datas.Course_data();
-                    foreach (var cur in Curso)
+                // verificando que solo contenga
+
+                foreach (var item in Course_data)
+                {
+                    if (Course_data.Count <=10)
                     {
-                        int t=1;
-                        for (int i = 0; i < 32; i++)
+                        for (int e = 1; e < 32; e++)
                         {
-                            DIA dias = new DIA(alum.IdeAlumno, cur.IdeCurso);
-                            var dia=new Day()
+                            var fecha = new Day_template()
                             {
-                                Mes = "Mayo",
-                                Fecha = t+++"/05/2022",
-                                Presente = "#8D8D88",
-                                Tarde = "#8D8D88",
-                                Falta = "#8D8D88",
-                            };
-                            dias.Dia(dia);
+                                Present = "#9CA29A",
+                                Delay = "#9CA29A",
+                                Absent = "#9CA29A",
+                            };string date = e + "-05-2022";
+                            Console.WriteLine(date);
+                            User_FB.Create_Day_Tables(
+                                ResultGrado,
+                                ResultSeccion,
+                                cursos[j],
+                                item.KeyData,
+                                date,
+                                fecha);
                         }
+                    }else
+                    {
+                        await App.Current.MainPage.DisplayAlert("error","dias no guardados","OK");
+                        User_FB.Delete_Info_Tables_Ide(
+                            ResultGrado,
+                            ResultSeccion,
+                            cursos[j],
+                            item.KeyData);
+                        break;
                     }
                 }
+                
             }
-            //var dia = new Day() { };
-            //var curso = new Course()
-            //{
-            //    Curso = "",
-            //    IdeDocenteC = "",
-            //    Hora_inicio = "",
-            //    Hora_fin = "",
-            //    Meses_dia = dia,
-            //};
-
-
-
 
             LimpiarEntry();
-            hora.Clear();
-            hora_fin.Clear();
 
         }
 
-        private async void InsertarDias(string id)
+        public async void Data_Add()
         {
-            var dias = new Day()
-            {
 
-            };
         }
-
-
         public void LimpiarEntry()
         {
             Ide = 0;
@@ -263,10 +219,12 @@ namespace MateoPumacahua.ViewModel.Admin
             Name = "";
             SurName = "";
             SecondName = "";
+            Phone = "";
+            ResultGenero = "";
             ResultGrado = "";
             ResultSeccion = "";
-            ResultGenero = "";
         }
+        #endregion
 
     }
 }

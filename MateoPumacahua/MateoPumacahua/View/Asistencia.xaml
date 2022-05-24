@@ -5,38 +5,103 @@
              x:Class="MateoPumacahua.View.Asistencia"
              Title="Tomar asistencia"
              >
-    <StackLayout>
-        <Frame >
+    <StackLayout Margin="3,0,3,0"
+                 Padding="2">
+        
+            <Frame Margin="0"
+                   Padding="0">
 
-            <StackLayout>
-
+            <ScrollView Orientation="Horizontal">
                 <StackLayout Orientation="Horizontal">
 
-                    <Label Text="Fecha Hoy"/>
-                    <Label Text="{Binding Fecha}"/>
+                    <Frame Margin="0"
+                           Padding="5"
+                           WidthRequest="70"
+                           HeightRequest="60">
+                        <StackLayout Orientation="Vertical">
+
+                            <Label Text="Fecha Hoy "
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   Margin="0"
+                                   Padding="0"/>
+                            <Label Text="{Binding Fecha}"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   Margin="0"
+                                   Padding="0"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Margin="0"
+                           Padding="5"
+                           WidthRequest="70"
+                           HeightRequest="60">
+                        <StackLayout Orientation="Vertical">
+
+                            <Label Text="Seccion "
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   Margin="0"
+                                   Padding="0"/>
+                            <Label Text="{Binding Seccion}"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   Margin="0"
+                                   Padding="0"/>
+
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Margin="0"
+                           Padding="5"
+                           WidthRequest="70"
+                           HeightRequest="60">
+                        <StackLayout Orientation="Vertical">
+
+                            <Label Text="Grado "
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   Margin="0"
+                                   Padding="0"/>
+                            <Label Text="{Binding Grado}"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   Margin="0"
+                                   Padding="0"/>
+
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Margin="0"
+                           Padding="5"
+                           WidthRequest="90"
+                           HeightRequest="60">
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="Total Alumno  "
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   Margin="0"
+                                   Padding="0"/>
+                            <Label Text="{Binding AlumnTotal}"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   Margin="0"
+                                   Padding="0"/>
+
+                        </StackLayout>
+                    </Frame>
+
                 </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-
-                    <Label Text="Seccion: "/>
-                    <Label Text="{Binding Seccion}"/>
-
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-
-                    <Label Text="Grado: "/>
-                    <Label Text="{Binding Grado}"/>
-
-                </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Alumno Total: "/>
-                    <Label Text="{Binding AlumnTotal}"/>
-
-                </StackLayout>
-
-            </StackLayout>
+            </ScrollView>
 
         </Frame>
 
@@ -68,7 +133,7 @@
                                            TextColor="Black"
                                            FontSize="20"/>
 
-                                    <Label Text="{Binding SurName}"
+                                    <Label Text="{Binding FirstName}"
                                            TextColor="Black"
                                            FontSize="20"/>
 
@@ -89,7 +154,7 @@
                                             Text="Presente"
                                             TextColor="White"
                                             HorizontalOptions="Center"
-                                            BackgroundColor="{Binding Presente}"
+                                            BackgroundColor="{Binding Present}"
                                             HeightRequest="30"
                                             WidthRequest="100"
                                             Padding="2"
@@ -101,7 +166,7 @@
 
                                     <Button Text="Tarde"
                                             TextColor="Black"
-                                            BackgroundColor="#8D8D88"
+                                            BackgroundColor="{Binding Delay}"
                                             HeightRequest="30"
                                             WidthRequest="100"
                                             Padding="2"
@@ -113,7 +178,7 @@
 
                                     <Button Text="Falta"
                                             TextColor="White"
-                                            BackgroundColor="#8D8D88"
+                                            BackgroundColor="{Binding Absent}"
                                             HeightRequest="30"
                                             WidthRequest="100"
                                             Padding="2"

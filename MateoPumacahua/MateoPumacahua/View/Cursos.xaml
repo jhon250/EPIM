@@ -4,7 +4,7 @@
              x:Class="MateoPumacahua.View.Cursos">
     
     <ListView x:Name="ListView" 
-              ItemsSource="{Binding ListViewSource_Curso}"
+              ItemsSource="{Binding ListViewSource}"
               IsRefreshing="{Binding IsRefreshing}"
               IsPullToRefreshEnabled="True"
               HasUnevenRows="True"
@@ -18,27 +18,44 @@
                            Padding="10"
                            Margin="10"
                            x:Name="Item">
+                    
                     <StackLayout Padding="0"
                                      Margin="0">
 
-                        <StackLayout Orientation="Horizontal"
+                        <StackLayout Orientation="Vertical"
                                        HorizontalOptions="CenterAndExpand"
                                          Padding="0"
                                          Margin="0">
 
                             <Label Text="{Binding Name}"
                                        TextColor="Black"
-                                       FontSize="20"/>
+                                       FontSize="20"
+                                   HorizontalTextAlignment="Center"
+                                   />
 
-                            <Label Text="{Binding SurName}"
+                            <Label Text="{Binding Grado}"
                                        TextColor="Black"
-                                       FontSize="20"/>
+                                       FontSize="20"
+                                   HorizontalTextAlignment="Center"/>
 
-                            <Label Text="{Binding SecondName}"
+                            <Label Text="{Binding Seccion}"
                                        TextColor="Black"
-                                       FontSize="20"/>
+                                       FontSize="20"
+                                   HorizontalTextAlignment="Center"/>
 
-                        </StackLayout>
+                            <Button Text="Ver Horario"
+                                            TextColor="White"
+                                            BackgroundColor="Black"
+                                            HeightRequest="30"
+                                            WidthRequest="100"
+                                            Padding="2"
+                                            CornerRadius="10"
+                                            Command="{Binding 
+                                            Path=BindingContext.SeeSchedule , 
+                                            Source={x:Reference ListView}}"
+                                            CommandParameter="{Binding .}"/>
+
+                            </StackLayout>
 
                     </StackLayout>
                 </Frame>

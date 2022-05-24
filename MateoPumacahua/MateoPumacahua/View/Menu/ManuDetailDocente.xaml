@@ -12,9 +12,11 @@
                HorizontalTextAlignment="Center"
                FontSize="30"/>
 
-        <Button Text="Agregar alumno"/>
+        <Button Text="Mi Perfil"
+                Clicked="Button_Clicked"/>
 
-        <Button Text="Agregar Docente"/>
+        <Button Text="Mi courso"
+                Clicked="Button_Clicked_1"/>
 
     </StackLayout>
 </ContentPage>

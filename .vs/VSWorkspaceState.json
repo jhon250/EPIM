@@ -3,9 +3,11 @@
     "",
     "\\MateoPumacahua",
     "\\MateoPumacahua\\MateoPumacahua",
-    "\\MateoPumacahua\\MateoPumacahua\\FireBase",
     "\\MateoPumacahua\\MateoPumacahua\\Model",
     "\\MateoPumacahua\\MateoPumacahua\\View",
+    "\\MateoPumacahua\\MateoPumacahua\\ViewModel",
+    "\\MateoPumacahua\\MateoPumacahua\\ViewModel\\Admin",
+    "\\MateoPumacahua\\MateoPumacahua\\View\\Admin",
     "\\MateoPumacahua\\MateoPumacahua\\View\\Login",
     "\\MateoPumacahua\\MateoPumacahua\\View\\Menu"
   ],

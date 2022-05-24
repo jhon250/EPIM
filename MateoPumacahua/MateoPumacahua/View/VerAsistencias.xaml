@@ -2,7 +2,107 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MateoPumacahua.View.VerAsistencias">
-    <ListView x:Name="ListView" 
+
+    <StackLayout>
+
+        <Frame Margin="0"
+                   Padding="0">
+
+            <ScrollView Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal">
+
+                    <Frame Margin="0"
+                           Padding="5"
+                           WidthRequest="70"
+                           HeightRequest="60">
+                        <StackLayout Orientation="Vertical">
+
+                            <Label Text="Fecha Hoy "
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   Margin="0"
+                                   Padding="0"/>
+                            <Label Text="{Binding Fecha}"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   Margin="0"
+                                   Padding="0"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Margin="0"
+                           Padding="5"
+                           WidthRequest="70"
+                           HeightRequest="60">
+                        <StackLayout Orientation="Vertical">
+
+                            <Label Text="Seccion "
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   Margin="0"
+                                   Padding="0"/>
+                            <Label Text="{Binding Seccion}"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   Margin="0"
+                                   Padding="0"/>
+
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Margin="0"
+                           Padding="5"
+                           WidthRequest="70"
+                           HeightRequest="60">
+                        <StackLayout Orientation="Vertical">
+
+                            <Label Text="Grado "
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   Margin="0"
+                                   Padding="0"/>
+                            <Label Text="{Binding Grado}"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   Margin="0"
+                                   Padding="0"/>
+
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Margin="0"
+                           Padding="5"
+                           WidthRequest="90"
+                           HeightRequest="60">
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="Total cursos "
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   Margin="0"
+                                   Padding="0"/>
+                            <Label Text="{Binding AlumnTotal}"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="Black"
+                                   Margin="0"
+                                   Padding="0"/>
+
+                        </StackLayout>
+                    </Frame>
+
+                </StackLayout>
+            </ScrollView>
+
+        </Frame>
+
+        <ListView x:Name="ListView" 
               ItemsSource="{Binding ListViewSource}"
               IsRefreshing="{Binding IsRefreshing}"
               IsPullToRefreshEnabled="True"
@@ -10,90 +110,71 @@
               SeparatorColor="red"
               >
 
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <Frame BorderColor="green"
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame BorderColor="green"
                            CornerRadius="10"
                            Padding="10"
                            Margin="10"
                            x:Name="Item">
-                        <StackLayout Padding="0"
+                            <StackLayout Padding="0"
                                      Margin="0">
 
-                            <StackLayout Orientation="Horizontal"
+                                <StackLayout Orientation="Horizontal"
                                        HorizontalOptions="CenterAndExpand"
                                          Padding="0"
                                          Margin="0">
 
-                                <Label Text="{Binding Name}"
+                                    <Label Text="{Binding Materia}"
                                        TextColor="Black"
                                        FontSize="20"/>
 
-                                <Label Text="{Binding SurName}"
-                                       TextColor="Black"
-                                       FontSize="20"/>
-
-                                <Label Text="{Binding SecondName}"
-                                       TextColor="Black"
-                                       FontSize="20"/>
-
-                            </StackLayout>
+                                </StackLayout>
 
 
-                            <StackLayout Orientation="Horizontal"
+                                <StackLayout Orientation="Horizontal"
                                          HorizontalOptions="CenterAndExpand"
                                          Margin="0"
                                          Padding="0"
                                          >
 
-                                <Button x:Name="present" 
+                                    <Button x:Name="present" 
                                         Text="Presente"
                                         TextColor="White"
                                         HorizontalOptions="Center"
-                                        BackgroundColor="{Binding 
-                                        Path=BindingContext.ColorPresente,
-                                        Source={x:Reference ListView},
-                                        Mode=TwoWay}"
-                                        HeightRequest="30"
+                                        BackgroundColor="{Binding Present}"
+                                        HeightRequest="40"
                                         WidthRequest="100"
                                         Padding="2"
                                         CornerRadius="10"
-                                        Command="{Binding 
-                                        Path=BindingContext.Presente ,
-                                        Source={x:Reference ListView}}"
-                                        CommandParameter="{Binding .}"/>
+                                        />
 
-                                <Button Text="Tarde"
+                                    <Button Text="Tarde"
                                         TextColor="Black"
-                                        BackgroundColor="#8D8D88"
-                                        HeightRequest="30"
+                                        BackgroundColor="{Binding Delay}"
+                                        HeightRequest="40"
                                         WidthRequest="100"
                                         Padding="2"
                                         CornerRadius="10"
-                                        Command="{Binding
-                                        Path=BindingContext.Tarde ,
-                                        Source={x:Reference ListView}}"
-                                        CommandParameter="{Binding .}"/>
+                                        />
 
-                                <Button Text="Falta"
+                                    <Button Text="Falta"
                                         TextColor="White"
-                                        BackgroundColor="#8D8D88"
-                                        HeightRequest="30"
+                                        BackgroundColor="{Binding Absent}"
+                                        HeightRequest="40"
                                         WidthRequest="100"
                                         Padding="2"
                                         CornerRadius="10"
-                                        Command="{Binding 
-                                        Path=BindingContext.Falta , 
-                                        Source={x:Reference ListView}}"
-                                        CommandParameter="{Binding .}"/>
+                                        />
+
+                                </StackLayout>
 
                             </StackLayout>
-
-                        </StackLayout>
-                    </Frame>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>
